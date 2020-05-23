@@ -337,7 +337,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.edu.utas.cis.username.raffle_drawing;
+				PRODUCT_BUNDLE_IDENTIFIER = au.edu.utas.cis.username.raffleDrawing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -354,7 +354,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = au.edu.utas.cis.username.raffle_drawing;
+				PRODUCT_BUNDLE_IDENTIFIER = au.edu.utas.cis.username.raffleDrawing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
