@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:../Raffle_drawing">
+      location = "self:">
    </FileRef>
 </Workspace>
