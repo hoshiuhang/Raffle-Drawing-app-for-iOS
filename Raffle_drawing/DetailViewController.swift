@@ -11,17 +11,36 @@ import UIKit
 class DetailViewController: UIViewController
 {
     
-    //label
+    // Display raflle detail label
  
     @IBOutlet var rTitleLabel: UILabel!
-    
     
     @IBOutlet var rPriceLabel: UILabel!
     
     @IBOutlet var rIDLabel: UILabel!
-    //
     
-    var raffle: Raffle? //store the selected movie
+    
+//    button
+    
+    
+    @IBAction func drawRaffleButton(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func sellTicketButton(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func editingRaffleButton(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func soldTisketListButton(_ sender: UIButton) {
+    }
+    
+    
+    
+    var raffle: Raffle? //store the selected Raffle
     
     override func viewDidLoad()
     {
@@ -38,7 +57,19 @@ class DetailViewController: UIViewController
         
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {     if segue.identifier == "showTicketListSegue"
+        {         print("Second view controller segue called")
+            
+            let displayRaffle = raffle //Get the current raffle name
+            
+            let nextScreen = segue.destination as! ticketTableViewController //select target screen
+            
+            nextScreen.raffleTitle = String(displayRaffle!.title)
+            
+            
+        }
+    }
     /*
     // MARK: - Navigation
 

@@ -12,6 +12,6 @@ public struct Raffle
     var title:String
     var price:Int32
     var max_ticket:Int32
-    var max_player:Int32
+    var description:String
     var prize:String
 }

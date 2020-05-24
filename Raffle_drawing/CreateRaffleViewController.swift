@@ -14,10 +14,6 @@ class CreateRaffleViewController: UIViewController
     
     @IBOutlet weak var titleField: UITextField!
     
-    @IBOutlet weak var ticketPriceField: UITextField!
-    
-    @IBOutlet var maxTicketField: UITextField!
-    
     @IBOutlet var maxPlayerField: UITextField!
     
     @IBOutlet var prizeField: UITextField!
@@ -77,7 +73,6 @@ class CreateRaffleViewController: UIViewController
         let prizeTitle:String = prizeField.text!
 
 
-        //database.insert(raffle:Raffle(title:raffleTitle))
         database.insert(raffle:Raffle (title:String(raffleTitle ), price:Int32(rafflePrice ?? 5), max_ticket:Int32(maxTicket ?? 1000),max_player:Int32(maxPlayer ?? 100),prize:String(prizeTitle )))
         myraffleUItableViewController?.viewWillAppear(true)
         

@@ -9,10 +9,13 @@
 import UIKit
 
 class ticketTableViewController: UITableViewController {
-
+    var raffleTitle : String?//related raffle detail
+    var tickets = [Ticket]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+               
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

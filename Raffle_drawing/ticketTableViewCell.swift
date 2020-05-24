@@ -13,7 +13,6 @@ class ticketTableViewCell: UITableViewCell {
     
     @IBOutlet var tNumberLabel: UILabel!
     
-    
     @IBOutlet var playerNameLabel: UILabel!
     
     @IBOutlet var tPriceLabel: UILabel!

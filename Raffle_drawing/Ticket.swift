@@ -9,9 +9,8 @@
 public struct Ticket
 {
     var ticketID:Int32 = -1
-    var tPrice:String
-    var player_id:String
-    var raffle_id:Int32
+    var tPrice:Int32
+    var player_id:Int32
     var dateTime:String
    
 }

@@ -7,11 +7,11 @@
 //
 
 import UIKit
-var raffles = [Raffle]()
+
 
 class RaffleUITableViewController: UITableViewController
 {
-
+var raffles = [Raffle]()
    
     
     override func viewDidLoad()
@@ -40,12 +40,13 @@ class RaffleUITableViewController: UITableViewController
         return 1
     }
 
+    //Set up the row number
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return raffles.count
     }
 
-    
+    //Display the detail on the Raffle Table View
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RaffleUITableViewCell", for: indexPath)
@@ -62,6 +63,7 @@ class RaffleUITableViewController: UITableViewController
         return cell
     }
     
+    //pass the raffle detail to detail view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         super.prepare(for: segue, sender: sender)
@@ -82,14 +84,19 @@ class RaffleUITableViewController: UITableViewController
             let selectedRaffle = raffles[indexPath.row]
             detailViewController.raffle = selectedRaffle
             }
-        if segue.identifier == "addNewRaffle"
-                  {self.tableView.reloadData()}
+//        if segue.identifier == "addNewRaffle"
+//                  {self.tableView.reloadData()}
     }
+    
+    //delete function
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == .delete
         {
-            raffles.remove(at: indexPath.row)
+            let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase") //connect to database
+            let selectedRaffle = raffles[indexPath.row] //identify the current row
+            database.deleteRaffle(ID : selectedRaffle.ID) //pass the raffle id to delete function
+            raffles.remove(at: indexPath.row) 
             tableView.deleteRows(at: [indexPath], with: .fade)
             
         
@@ -102,15 +109,13 @@ class RaffleUITableViewController: UITableViewController
         
     }
     
+    //catch the unwind Segue function
     @IBAction func addNewRaffle(segue: UIStoryboardSegue){
         print ("Second view controller closed")
        
-               
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
         raffles = database.selectAllRaffle()
                self.tableView.reloadData()
-       
-     
         print("table reload")
         
     }
