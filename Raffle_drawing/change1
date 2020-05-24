@@ -1,0 +1,733 @@
+diff --git a/Raffle_drawing.xcodeproj/project.xcworkspace/xcuserdata/Sunny.xcuserdatad/UserInterfaceState.xcuserstate b/Raffle_drawing.xcodeproj/project.xcworkspace/xcuserdata/Sunny.xcuserdatad/UserInterfaceState.xcuserstate
+index 9eea931..be17c9c 100644
+Binary files a/Raffle_drawing.xcodeproj/project.xcworkspace/xcuserdata/Sunny.xcuserdatad/UserInterfaceState.xcuserstate and b/Raffle_drawing.xcodeproj/project.xcworkspace/xcuserdata/Sunny.xcuserdatad/UserInterfaceState.xcuserstate differ
+diff --git a/Raffle_drawing.xcodeproj/xcuserdata/Sunny.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist b/Raffle_drawing.xcodeproj/xcuserdata/Sunny.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+index 2371ec3..fa13f8b 100644
+--- a/Raffle_drawing.xcodeproj/xcuserdata/Sunny.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
++++ b/Raffle_drawing.xcodeproj/xcuserdata/Sunny.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+@@ -46,28 +46,12 @@
+             filePath = "Raffle_drawing/SQLiteDatabase.swift"
+             startingColumnNumber = "9223372036854775807"
+             endingColumnNumber = "9223372036854775807"
+-            startingLineNumber = "263"
+-            endingLineNumber = "263"
++            startingLineNumber = "317"
++            endingLineNumber = "317"
+             landmarkName = "updateWithQuery(_:bindingFunction:)"
+             landmarkType = "7">
+          </BreakpointContent>
+       </BreakpointProxy>
+-      <BreakpointProxy
+-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+-         <BreakpointContent
+-            uuid = "61858EB7-B4C0-4B3F-A9AD-F19DEF2BA9BE"
+-            shouldBeEnabled = "No"
+-            ignoreCount = "0"
+-            continueAfterRunningActions = "No"
+-            filePath = "Raffle_drawing/SQLiteDatabase.swift"
+-            startingColumnNumber = "9223372036854775807"
+-            endingColumnNumber = "9223372036854775807"
+-            startingLineNumber = "256"
+-            endingLineNumber = "256"
+-            landmarkName = "selectWithQuery(_:eachRow:bindingFunction:)"
+-            landmarkType = "7">
+-         </BreakpointContent>
+-      </BreakpointProxy>
+       <BreakpointProxy
+          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+          <BreakpointContent
+@@ -100,5 +84,37 @@
+             landmarkType = "7">
+          </BreakpointContent>
+       </BreakpointProxy>
++      <BreakpointProxy
++         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
++         <BreakpointContent
++            uuid = "4FA53723-5DA6-41F4-9E15-14771549DE76"
++            shouldBeEnabled = "No"
++            ignoreCount = "0"
++            continueAfterRunningActions = "No"
++            filePath = "Raffle_drawing/SQLiteDatabase.swift"
++            startingColumnNumber = "9223372036854775807"
++            endingColumnNumber = "9223372036854775807"
++            startingLineNumber = "120"
++            endingLineNumber = "120"
++            landmarkName = "createTableWithQuery(_:tableName:)"
++            landmarkType = "7">
++         </BreakpointContent>
++      </BreakpointProxy>
++      <BreakpointProxy
++         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
++         <BreakpointContent
++            uuid = "FE2BD874-043B-4A35-8385-FD565B650503"
++            shouldBeEnabled = "No"
++            ignoreCount = "0"
++            continueAfterRunningActions = "No"
++            filePath = "Raffle_drawing/SQLiteDatabase.swift"
++            startingColumnNumber = "9223372036854775807"
++            endingColumnNumber = "9223372036854775807"
++            startingLineNumber = "19"
++            endingLineNumber = "19"
++            landmarkName = "SQLiteDatabase"
++            landmarkType = "3">
++         </BreakpointContent>
++      </BreakpointProxy>
+    </Breakpoints>
+ </Bucket>
+diff --git a/Raffle_drawing/Base.lproj/Main.storyboard b/Raffle_drawing/Base.lproj/Main.storyboard
+index f2a07a0..8ceeea7 100644
+--- a/Raffle_drawing/Base.lproj/Main.storyboard
++++ b/Raffle_drawing/Base.lproj/Main.storyboard
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XXC-y6-CP3">
++<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XXC-y6-CP3">
+     <device id="retina6_5" orientation="portrait" appearance="light"/>
+     <dependencies>
+         <deployment identifier="iOS"/>
+@@ -114,19 +114,14 @@
+                                 <nil key="textColor"/>
+                                 <nil key="highlightedColor"/>
+                             </label>
+-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum player:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImY-QF-pgf">
++                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle discription:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImY-QF-pgf">
+                                 <rect key="frame" x="41" y="412" width="129.66666666666666" height="21"/>
+                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                 <nil key="textColor"/>
+                                 <nil key="highlightedColor"/>
+                             </label>
+-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ats-2a-9MW">
+-                                <rect key="frame" x="41" y="505" width="332" height="34"/>
+-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+-                                <textInputTraits key="textInputTraits"/>
+-                            </textField>
+-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prize:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKn-Rn-VxJ">
+-                                <rect key="frame" x="41" y="480" width="43" height="21"/>
++                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Prize:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKn-Rn-VxJ">
++                                <rect key="frame" x="41" y="569" width="43" height="21"/>
+                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                 <nil key="textColor"/>
+                                 <nil key="highlightedColor"/>
+@@ -142,8 +137,8 @@
+                                     <action selector="confirmButton:" destination="I1L-0a-Km2" eventType="touchUpInside" id="xAe-mX-AvA"/>
+                                 </connections>
+                             </button>
+-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4hb-jQ-N7G">
+-                                <rect key="frame" x="41" y="438" width="332" height="34"/>
++                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4hb-jQ-N7G">
++                                <rect key="frame" x="41" y="438" width="332" height="123"/>
+                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                 <textInputTraits key="textInputTraits"/>
+                             </textField>
+@@ -171,6 +166,11 @@
+                                 <nil key="textColor"/>
+                                 <nil key="highlightedColor"/>
+                             </label>
++                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ats-2a-9MW">
++                                <rect key="frame" x="41" y="598" width="332" height="34"/>
++                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
++                                <textInputTraits key="textInputTraits"/>
++                            </textField>
+                         </subviews>
+                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                         <constraints>
+@@ -222,7 +222,6 @@
+                     </view>
+                     <navigationItem key="navigationItem" id="ibj-6z-fik"/>
+                     <connections>
+-                        <outlet property="maxPlayerField" destination="4hb-jQ-N7G" id="Mh6-ML-z5L"/>
+                         <outlet property="maxTicketLabel" destination="UnG-YQ-s0M" id="vh8-xH-Hgn"/>
+                         <outlet property="maxTicketSlider" destination="jCz-k8-VEp" id="j8P-yE-odb"/>
+                         <outlet property="priceLabel" destination="Vvj-sc-s8Q" id="9NB-Wa-ycv"/>
+@@ -237,10 +236,10 @@
+             </objects>
+             <point key="canvasLocation" x="1453.6231884057972" y="888.61607142857144"/>
+         </scene>
+-        <!--Table View Controller-->
++        <!--Ticket Table View Controller-->
+         <scene sceneID="BDS-FH-f7q">
+             <objects>
+-                <tableViewController id="fka-bl-aTK" sceneMemberID="viewController">
++                <tableViewController id="fka-bl-aTK" customClass="ticketTableViewController" customModule="Raffle_drawing" customModuleProvider="target" sceneMemberID="viewController">
+                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bgh-LB-qkq">
+                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+@@ -303,6 +302,7 @@
+                             <outlet property="delegate" destination="fka-bl-aTK" id="9g7-FV-C4S"/>
+                         </connections>
+                     </tableView>
++                    <navigationItem key="navigationItem" id="cZL-95-O3f"/>
+                 </tableViewController>
+                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBB-qP-pfn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+             </objects>
+@@ -316,8 +316,8 @@
+                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                         <subviews>
+-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zln-ZH-aMd">
+-                                <rect key="frame" x="290" y="164" width="11" height="21"/>
++                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zln-ZH-aMd">
++                                <rect key="frame" x="290" y="165" width="11" height="21"/>
+                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                 <nil key="textColor"/>
+                                 <nil key="highlightedColor"/>
+@@ -328,14 +328,14 @@
+                                 <nil key="textColor"/>
+                                 <nil key="highlightedColor"/>
+                             </label>
+-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="rIDLabel" text="rIDLablelOutlet" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ho0-ob-bua" userLabel="rIDLabel">
+-                                <rect key="frame" x="109" y="164" width="115" height="21"/>
++                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="rIDLabel" text="rIDLablelOutlet" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ho0-ob-bua" userLabel="rIDLabel">
++                                <rect key="frame" x="103" y="164" width="115" height="21"/>
+                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                 <nil key="textColor"/>
+                                 <nil key="highlightedColor"/>
+                             </label>
+-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="rTitleOutlet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf8-9b-00B" userLabel="rTitleLabel">
+-                                <rect key="frame" x="115" y="123" width="85.666666666666686" height="21"/>
++                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rTitleOutlet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf8-9b-00B" userLabel="rTitleLabel">
++                                <rect key="frame" x="103" y="124" width="85.666666666666686" height="21"/>
+                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                 <nil key="textColor"/>
+                                 <nil key="highlightedColor"/>
+@@ -346,31 +346,69 @@
+                                 <nil key="textColor"/>
+                                 <nil key="highlightedColor"/>
+                             </label>
+-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Raffle ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJE-sZ-x7X">
+-                                <rect key="frame" x="20" y="164" width="71" height="21"/>
++                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Raffle ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJE-sZ-x7X">
++                                <rect key="frame" x="20" y="165" width="71" height="21"/>
+                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                 <nil key="textColor"/>
+                                 <nil key="highlightedColor"/>
+                             </label>
++                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhq-MA-nnC">
++                                <rect key="frame" x="44" y="339" width="131" height="30"/>
++                                <state key="normal" title="Edit Raffle Settings"/>
++                                <connections>
++                                    <action selector="editingRaffleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rrI-ud-Gho"/>
++                                </connections>
++                            </button>
++                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTZ-mQ-Mpl">
++                                <rect key="frame" x="274" y="254" width="71" height="30"/>
++                                <state key="normal" title="Sell Ticket"/>
++                                <connections>
++                                    <action selector="sellTicketButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IG3-OL-Z4S"/>
++                                </connections>
++                            </button>
++                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yga-m5-zZp">
++                                <rect key="frame" x="262" y="339" width="97" height="30"/>
++                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                <state key="normal" title="Sold ticket list"/>
++                                <connections>
++                                    <action selector="soldTisketListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mNK-zA-jlV"/>
++                                    <segue destination="fka-bl-aTK" kind="show" identifier="showTicketListSegue" id="5fu-gr-ZCM"/>
++                                </connections>
++                            </button>
++                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bha-AU-ydW">
++                                <rect key="frame" x="44" y="253" width="80" height="30"/>
++                                <state key="normal" title="Draw Raffle"/>
++                                <connections>
++                                    <action selector="drawRaffleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DjK-lE-6Ys"/>
++                                </connections>
++                            </button>
+                         </subviews>
+                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                         <constraints>
+                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="41m-SG-NZt" secondAttribute="trailing" constant="54" id="2CP-h0-Aek"/>
+                             <constraint firstItem="Ho0-ob-bua" firstAttribute="baseline" secondItem="gJE-sZ-x7X" secondAttribute="baseline" constant="-1" id="2Yv-AR-eFG"/>
++                            <constraint firstItem="Bha-AU-ydW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3nI-Bt-seo"/>
++                            <constraint firstItem="Lhq-MA-nnC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5ka-QC-BzW"/>
+                             <constraint firstItem="bf8-9b-00B" firstAttribute="leading" secondItem="zMn-P1-AdG" secondAttribute="trailing" constant="12" id="GvS-dw-ZTb"/>
+                             <constraint firstItem="Ho0-ob-bua" firstAttribute="top" secondItem="gJE-sZ-x7X" secondAttribute="top" constant="-1" id="OAO-kK-ciT"/>
+                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bf8-9b-00B" secondAttribute="trailing" constant="225.33333333333331" id="QYd-Pk-Xfr"/>
+                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ho0-ob-bua" secondAttribute="bottom" constant="677" id="R93-BM-gtu"/>
+                             <constraint firstItem="41m-SG-NZt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zln-ZH-aMd" secondAttribute="trailing" symbolic="YES" id="T9l-gb-oYl"/>
++                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lhq-MA-nnC" secondAttribute="trailing" constant="239" id="UB3-nv-JIE"/>
+                             <constraint firstItem="Ho0-ob-bua" firstAttribute="baseline" secondItem="41m-SG-NZt" secondAttribute="baseline" id="UXl-fH-E2m"/>
+                             <constraint firstItem="zMn-P1-AdG" firstAttribute="baseline" secondItem="bf8-9b-00B" secondAttribute="baseline" id="VG4-K2-jJk"/>
+                             <constraint firstItem="zMn-P1-AdG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="VPI-ZP-vmr"/>
+                             <constraint firstItem="gJE-sZ-x7X" firstAttribute="trailing" secondItem="zMn-P1-AdG" secondAttribute="trailing" id="Vai-hs-uXk"/>
+                             <constraint firstItem="Ho0-ob-bua" firstAttribute="baseline" secondItem="zln-ZH-aMd" secondAttribute="baseline" constant="-1" id="Zvh-D8-GAA"/>
+                             <constraint firstItem="gJE-sZ-x7X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="afi-Og-OXw"/>
++                            <constraint firstItem="KTZ-mQ-Mpl" firstAttribute="leading" secondItem="Bha-AU-ydW" secondAttribute="trailing" constant="169" id="b1L-Oc-xr2"/>
++                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KTZ-mQ-Mpl" secondAttribute="trailing" constant="69" id="bA0-Z8-B8z"/>
++                            <constraint firstItem="KTZ-mQ-Mpl" firstAttribute="top" secondItem="Bha-AU-ydW" secondAttribute="top" id="eLs-e0-caZ"/>
+                             <constraint firstItem="Ho0-ob-bua" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="103" id="gdo-HV-8e9"/>
++                            <constraint firstItem="Bha-AU-ydW" firstAttribute="top" secondItem="gJE-sZ-x7X" secondAttribute="bottom" constant="68" id="k7g-mz-IjZ"/>
+                             <constraint firstItem="zln-ZH-aMd" firstAttribute="leading" secondItem="Ho0-ob-bua" secondAttribute="trailing" constant="72" id="lNK-SR-Qgw"/>
+                             <constraint firstItem="Ho0-ob-bua" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gJE-sZ-x7X" secondAttribute="trailing" constant="8" symbolic="YES" id="mTJ-jH-l3H"/>
++                            <constraint firstItem="Lhq-MA-nnC" firstAttribute="top" secondItem="Bha-AU-ydW" secondAttribute="bottom" constant="55" id="tXy-oX-Fdf"/>
+                             <constraint firstItem="Ho0-ob-bua" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bf8-9b-00B" secondAttribute="leading" id="vQs-f3-G3d"/>
+                             <constraint firstItem="Ho0-ob-bua" firstAttribute="top" secondItem="bf8-9b-00B" secondAttribute="bottom" constant="19" id="zCr-T5-ZqZ"/>
+                         </constraints>
+diff --git a/Raffle_drawing/CreateRaffleViewController.swift b/Raffle_drawing/CreateRaffleViewController.swift
+index 719c23b..4107cff 100644
+--- a/Raffle_drawing/CreateRaffleViewController.swift
++++ b/Raffle_drawing/CreateRaffleViewController.swift
+@@ -14,10 +14,6 @@ class CreateRaffleViewController: UIViewController
+     
+     @IBOutlet weak var titleField: UITextField!
+     
+-    @IBOutlet weak var ticketPriceField: UITextField!
+-    
+-    @IBOutlet var maxTicketField: UITextField!
+-    
+     @IBOutlet var maxPlayerField: UITextField!
+     
+     @IBOutlet var prizeField: UITextField!
+@@ -77,7 +73,6 @@ class CreateRaffleViewController: UIViewController
+         let prizeTitle:String = prizeField.text!
+ 
+ 
+-        //database.insert(raffle:Raffle(title:raffleTitle))
+         database.insert(raffle:Raffle (title:String(raffleTitle ), price:Int32(rafflePrice ?? 5), max_ticket:Int32(maxTicket ?? 1000),max_player:Int32(maxPlayer ?? 100),prize:String(prizeTitle )))
+         myraffleUItableViewController?.viewWillAppear(true)
+         
+diff --git a/Raffle_drawing/DetailViewController.swift b/Raffle_drawing/DetailViewController.swift
+index 97f0a3c..dbb6db3 100644
+--- a/Raffle_drawing/DetailViewController.swift
++++ b/Raffle_drawing/DetailViewController.swift
+@@ -11,17 +11,36 @@ import UIKit
+ class DetailViewController: UIViewController
+ {
+     
+-    //label
++    // Display raflle detail label
+  
+     @IBOutlet var rTitleLabel: UILabel!
+     
+-    
+     @IBOutlet var rPriceLabel: UILabel!
+     
+     @IBOutlet var rIDLabel: UILabel!
+-    //
+     
+-    var raffle: Raffle? //store the selected movie
++    
++//    button
++    
++    
++    @IBAction func drawRaffleButton(_ sender: UIButton) {
++    }
++    
++    
++    @IBAction func sellTicketButton(_ sender: UIButton) {
++    }
++    
++    
++    @IBAction func editingRaffleButton(_ sender: UIButton) {
++    }
++    
++    
++    @IBAction func soldTisketListButton(_ sender: UIButton) {
++    }
++    
++    
++    
++    var raffle: Raffle? //store the selected Raffle
+     
+     override func viewDidLoad()
+     {
+@@ -38,7 +57,19 @@ class DetailViewController: UIViewController
+         
+     }
+     
+-
++    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
++    {     if segue.identifier == "showTicketListSegue"
++        {         print("Second view controller segue called")
++            
++            let displayRaffle = raffle //Get the current raffle name
++            
++            let nextScreen = segue.destination as! ticketTableViewController //select target screen
++            
++            nextScreen.raffleTitle = String(displayRaffle!.title)
++            
++            
++        }
++    }
+     /*
+     // MARK: - Navigation
+ 
+diff --git a/Raffle_drawing/Raffle.swift b/Raffle_drawing/Raffle.swift
+index 0523980..024bc2e 100644
+--- a/Raffle_drawing/Raffle.swift
++++ b/Raffle_drawing/Raffle.swift
+@@ -12,6 +12,6 @@ public struct Raffle
+     var title:String
+     var price:Int32
+     var max_ticket:Int32
+-    var max_player:Int32
++    var description:String
+     var prize:String
+ }
+diff --git a/Raffle_drawing/RaffleUITableViewController.swift b/Raffle_drawing/RaffleUITableViewController.swift
+index c119737..a9cf6c0 100644
+--- a/Raffle_drawing/RaffleUITableViewController.swift
++++ b/Raffle_drawing/RaffleUITableViewController.swift
+@@ -7,11 +7,11 @@
+ //
+ 
+ import UIKit
+-var raffles = [Raffle]()
++
+ 
+ class RaffleUITableViewController: UITableViewController
+ {
+-
++var raffles = [Raffle]()
+    
+     
+     override func viewDidLoad()
+@@ -40,12 +40,13 @@ class RaffleUITableViewController: UITableViewController
+         return 1
+     }
+ 
++    //Set up the row number
+     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         // #warning Incomplete implementation, return the number of rows
+         return raffles.count
+     }
+ 
+-    
++    //Display the detail on the Raffle Table View
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+     {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "RaffleUITableViewCell", for: indexPath)
+@@ -62,6 +63,7 @@ class RaffleUITableViewController: UITableViewController
+         return cell
+     }
+     
++    //pass the raffle detail to detail view controller
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+     {
+         super.prepare(for: segue, sender: sender)
+@@ -82,14 +84,19 @@ class RaffleUITableViewController: UITableViewController
+             let selectedRaffle = raffles[indexPath.row]
+             detailViewController.raffle = selectedRaffle
+             }
+-        if segue.identifier == "addNewRaffle"
+-                  {self.tableView.reloadData()}
++//        if segue.identifier == "addNewRaffle"
++//                  {self.tableView.reloadData()}
+     }
++    
++    //delete function
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+     {
+         if editingStyle == .delete
+         {
+-            raffles.remove(at: indexPath.row)
++            let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase") //connect to database
++            let selectedRaffle = raffles[indexPath.row] //identify the current row
++            database.deleteRaffle(ID : selectedRaffle.ID) //pass the raffle id to delete function
++            raffles.remove(at: indexPath.row) 
+             tableView.deleteRows(at: [indexPath], with: .fade)
+             
+         
+@@ -102,15 +109,13 @@ class RaffleUITableViewController: UITableViewController
+         
+     }
+     
++    //catch the unwind Segue function
+     @IBAction func addNewRaffle(segue: UIStoryboardSegue){
+         print ("Second view controller closed")
+        
+-               
+         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+         raffles = database.selectAllRaffle()
+                self.tableView.reloadData()
+-       
+-     
+         print("table reload")
+         
+     }
+diff --git a/Raffle_drawing/SQLiteDatabase.swift b/Raffle_drawing/SQLiteDatabase.swift
+index 7efffd2..a0727e5 100644
+--- a/Raffle_drawing/SQLiteDatabase.swift
++++ b/Raffle_drawing/SQLiteDatabase.swift
+@@ -26,7 +26,7 @@ class SQLiteDatabase
+      
+         WARNING: DOING THIS WILL WIPE YOUR DATA, unless you modify how updateDatabase() works.
+      */
+-    private let DATABASE_VERSION = 9
++    private let DATABASE_VERSION = 10
+     
+     
+     
+@@ -77,7 +77,7 @@ class SQLiteDatabase
+         //INSERT YOUR dropTable function calls here
+         //e.g. dropTable(tableName:"Movie")
+         dropTable(tableName:"raffle")
+-         dropTable(tableName:"player")
++        dropTable(tableName:"player")
+     }
+     
+     /* --------------------------------*/
+@@ -152,6 +152,7 @@ class SQLiteDatabase
+     /* Pass this function a table name.
+         You should call this function from dropTables()
+      */
++    
+     private func dropTable(tableName:String)
+     {
+         /*
+@@ -180,6 +181,35 @@ class SQLiteDatabase
+         //clear up
+         sqlite3_finalize(statement)
+     }
++   
++    func deleteRaffle(ID:Int32)
++       {
++           /*
++            1.    sqlite3_prepare_v2()
++            2.    sqlite3_step()
++            3.    sqlite3_finalize()
++            */
++           
++           //prepare the statement
++           let query = "DELETE FROM raffle WHERE ID=\(ID)"
++           var statement: OpaquePointer? = nil
++
++           if sqlite3_prepare_v2(db, query, -1, &statement, nil)     == SQLITE_OK
++           {
++               //run the query
++               if sqlite3_step(statement) == SQLITE_DONE {
++                   print("\(ID) Raffle Delete.")
++               }
++           }
++           else
++           {
++               print("\(ID) Raffle could not be deleted.")
++               printCurrentSQLErrorMessage(db)
++           }
++           
++           //clear up
++           sqlite3_finalize(statement)
++       }
+     
+     //helper function for handling INSERT statements
+     //provide it with a binding function for replacing the ?'s for setting values
+@@ -223,6 +253,30 @@ class SQLiteDatabase
+         sqlite3_finalize(insertStatement)
+     }
+     
++//delete Raffle function
++//    private func deleteWithQuery(ID:Int32)
++//    {
++//        //prepare the statement
++//              let query = "DELETE FROM raffle WHERE ID=\(ID)";
++//               var statement: OpaquePointer? = nil
++//
++//               if sqlite3_prepare_v2(db, query, -1, &statement, nil)     == SQLITE_OK
++//               {
++//                   //run the query
++//                   if sqlite3_step(statement) == SQLITE_DONE {
++//                       print("\(ID) Raffle deleted.")
++//                   }
++//               }
++//               else
++//               {
++//                   print("\(ID) Raffle could not be deleted.")
++//                   printCurrentSQLErrorMessage(db)
++//               }
++//
++//               //clear up
++//               sqlite3_finalize(statement)
++//    }
++    
+     //helper function to run Select statements
+     //provide it with a function to do *something* with each returned row
+     //(optionally) Provide it with a binding function for replacing the "?"'s in the WHERE clause
+@@ -302,13 +356,14 @@ class SQLiteDatabase
+                 title CHAR(255),
+                 price INTEGER,
+                 max_ticket INTEGER,
+-                max_player INTEGER,
++                description CHAR(255)
+                 prize CHAR(255)
+                 
+             );
+         """
+         createTableWithQuery(createRaffleTableQuery, tableName: "raffle")
+     }
++//    Create new raffle
+     
+     func insert(raffle: Raffle)
+     {
+@@ -319,11 +374,35 @@ class SQLiteDatabase
+             sqlite3_bind_text(insertStatement, 1, NSString(string:raffle.title).utf8String, -1, nil)
+             sqlite3_bind_int(insertStatement, 2, raffle.price)
+             sqlite3_bind_int(insertStatement, 3, raffle.max_ticket)
+-            sqlite3_bind_int(insertStatement, 4, raffle.max_player)
++            sqlite3_bind_text(insertStatement, 4, NSString(string:raffle.description).utf8String, -1, nil)
+             sqlite3_bind_text(insertStatement, 5, NSString(string:raffle.prize).utf8String, -1,
+         nil) })
++        
++//        let newRaffleID = sqlite3_last_insert_rowid(db)
++        //create related ticket table for the same raffle
++        let createTicketTableQuery =
++        """
++        CREATE TABLE '\(raffle.title)'
++            (
++                ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
++                raffle_id INTEGER,
++                price INTEGER,
++                player_id INTEGER,
++                Date String
++
++            );
++        """
++        createTableWithQuery(createTicketTableQuery, tableName:"\(raffle.title)")
++
+     }
+-    // Query all movie
++//
++    
++   
++
++
++    
++    
++    // Query all Raffle
+     func selectAllRaffle() -> [Raffle]
+     {
+         var result = [Raffle]()
+@@ -335,7 +414,7 @@ class SQLiteDatabase
+         title: String(cString:sqlite3_column_text(row, 1)),
+         price: sqlite3_column_int(row, 2),
+         max_ticket: sqlite3_column_int(row, 3),
+-        max_player: sqlite3_column_int(row, 4),
++        description: String(cString:sqlite3_column_text(row, 4)),
+         prize: String(cString:sqlite3_column_text(row, 5))
+         )
+         //add it to the result array
+@@ -367,7 +446,7 @@ class SQLiteDatabase
+     //create player table function
+     func createPlayerTable()
+        {
+-           let createRaffleTableQuery =
++           let createPlayerTableQuery =
+            """
+                CREATE TABLE player
+                (
+@@ -379,9 +458,10 @@ class SQLiteDatabase
+                    
+                );
+            """
+-           createTableWithQuery(createRaffleTableQuery, tableName: "player")
++           createTableWithQuery(createPlayerTableQuery, tableName: "player")
+        }
+-    //insert player function
++    
++    //insert new player function
+     func insertPlayer (player: Player)
+     {
+         let insertStatementQuery =
+@@ -394,7 +474,7 @@ class SQLiteDatabase
+            sqlite3_bind_text(insertStatement, 2, NSString(string:player.email).utf8String, -1, nil)
+         })
+     }
+-    
++//select all players
+     func selectAllPlayer() -> [Player]
+        {
+            var result = [Player]()
+@@ -416,5 +496,34 @@ class SQLiteDatabase
+     
+     
+     
++// Mark:- Ticket related section
++
++    func selectAllTicket(tableName:String) -> [Ticket]
++    {
++        var result = [Ticket]()
++        let selectStatementQuery = "SELECT id,fname,lname,contact_no,email FROM \(tableName) "
++    
++       selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a movie object from each result
++        let ticket = Ticket(
++        ticketID: sqlite3_column_int(row, 0),
++        tPrice: sqlite3_column_int(row, 1),
++        player_id: sqlite3_column_int(row, 2),
++        dateTime: String(cString:sqlite3_column_text(row, 3))
++        )
++        //add it to the result array
++        result += [ticket]
++        })
++        return result
++    }
++
++        
++        
++        
++        
++        
++        
++    
++    
++    
+     
+ }
+diff --git a/Raffle_drawing/Ticket.swift b/Raffle_drawing/Ticket.swift
+index c56fcaf..4ca0a84 100644
+--- a/Raffle_drawing/Ticket.swift
++++ b/Raffle_drawing/Ticket.swift
+@@ -9,9 +9,8 @@
+ public struct Ticket
+ {
+     var ticketID:Int32 = -1
+-    var tPrice:String
+-    var player_id:String
+-    var raffle_id:Int32
++    var tPrice:Int32
++    var player_id:Int32
+     var dateTime:String
+    
+ }
+diff --git a/Raffle_drawing/ViewController.swift b/Raffle_drawing/ViewController.swift
+index 1d0325e..c992549 100644
+--- a/Raffle_drawing/ViewController.swift
++++ b/Raffle_drawing/ViewController.swift
+@@ -17,7 +17,7 @@ class ViewController: UIViewController
+     override func viewDidLoad()
+     {
+         super.viewDidLoad()
+-//
++
+     }
+ 
+ 
+diff --git a/Raffle_drawing/ticketTableViewCell.swift b/Raffle_drawing/ticketTableViewCell.swift
+index ac2849f..d6c8fe9 100644
+--- a/Raffle_drawing/ticketTableViewCell.swift
++++ b/Raffle_drawing/ticketTableViewCell.swift
+@@ -13,7 +13,6 @@ class ticketTableViewCell: UITableViewCell {
+     
+     @IBOutlet var tNumberLabel: UILabel!
+     
+-    
+     @IBOutlet var playerNameLabel: UILabel!
+     
+     @IBOutlet var tPriceLabel: UILabel!
+diff --git a/Raffle_drawing/ticketTableViewController.swift b/Raffle_drawing/ticketTableViewController.swift
+index c31192d..5fb2629 100644
+--- a/Raffle_drawing/ticketTableViewController.swift
++++ b/Raffle_drawing/ticketTableViewController.swift
+@@ -9,10 +9,13 @@
+ import UIKit
+ 
+ class ticketTableViewController: UITableViewController {
+-
++    var raffleTitle : String?//related raffle detail
++    var tickets = [Ticket]()
++    
+     override func viewDidLoad() {
+         super.viewDidLoad()
+-
++//        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
++               
+         // Uncomment the following line to preserve selection between presentations
+         // self.clearsSelectionOnViewWillAppear = false
+ 
