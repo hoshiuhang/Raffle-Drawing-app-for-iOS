@@ -67,7 +67,7 @@
                             <outlet property="delegate" destination="3vW-yq-2Fq" id="SQB-qY-m0e"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="eLM-vb-8Jt"/>
+                    <tabBarItem key="tabBarItem" title="Raffle" image="rectangle.fill.on.rectangle.angled.fill" catalog="system" id="eLM-vb-8Jt"/>
                     <navigationItem key="navigationItem" title="Raffle Drawing" largeTitleDisplayMode="always" id="DDU-mV-GJB"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1h-k3-TJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -109,13 +109,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Ticket:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dir-x5-Qi6">
-                                <rect key="frame" x="39" y="307" width="131" height="21"/>
+                                <rect key="frame" x="43" y="307" width="131" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle discription:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImY-QF-pgf">
-                                <rect key="frame" x="41" y="412" width="129.66666666666666" height="21"/>
+                                <rect key="frame" x="41" y="412" width="133.66666666666666" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="155" id="LDc-HK-c0T"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -138,12 +141,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4hb-jQ-N7G">
-                                <rect key="frame" x="41" y="438" width="332" height="113"/>
+                                <rect key="frame" x="41" y="438" width="332" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvj-sc-s8Q">
-                                <rect key="frame" x="276" y="231" width="14" height="27"/>
+                                <rect key="frame" x="280" y="231" width="14" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -161,7 +164,7 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnG-YQ-s0M">
-                                <rect key="frame" x="260" y="307" width="46" height="21"/>
+                                <rect key="frame" x="264" y="307" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -623,5 +626,6 @@
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="phone.circle" catalog="system" width="128" height="121"/>
+        <image name="rectangle.fill.on.rectangle.angled.fill" catalog="system" width="128" height="101"/>
     </resources>
 </document>

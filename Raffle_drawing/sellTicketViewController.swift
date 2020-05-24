@@ -16,8 +16,7 @@ class sellTicketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let searchBtn = UIButton()
-        searchBtn.layer.cornerRadius = 25.0
+    
         
         
         
