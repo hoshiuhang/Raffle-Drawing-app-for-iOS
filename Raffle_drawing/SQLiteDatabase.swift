@@ -355,6 +355,7 @@ class SQLiteDatabase
             sqlite3_bind_text(insertStatement, 5, NSString(string:raffle.prize).utf8String, -1,
         nil) })
         
+        
 //        let newRaffleID = sqlite3_last_insert_rowid(db)
         //create related ticket table for the same raffle
         let createTicketTableQuery =
@@ -429,7 +430,6 @@ class SQLiteDatabase
                (
                    ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                    fname CHAR(255),
-                   lname CHAR(255),
                    contact_no INTEGER,
                    email CHAR(255)
                    
@@ -442,11 +442,10 @@ class SQLiteDatabase
     func insertPlayer (player: Player)
     {
         let insertStatementQuery =
-            "INSERT INTO payer (fname, lanme, contact_no,email) VALUES (?, ?, ?, ?, ?);"
+            "INSERT INTO payer (fname, contact_no,email) VALUES (?, ?, ?, ?, ?);"
         
         insertWithQuery(insertStatementQuery, bindingFunction: { (insertStatement) in
             sqlite3_bind_text(insertStatement, 1, NSString(string:player.fname).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 2, NSString(string:player.lname).utf8String, -1, nil)
             sqlite3_bind_int(insertStatement, 3, player.contact_no)
            sqlite3_bind_text(insertStatement, 2, NSString(string:player.email).utf8String, -1, nil)
         })
@@ -455,22 +454,20 @@ class SQLiteDatabase
     func selectAllPlayer() -> [Player]
        {
            var result = [Player]()
-           let selectStatementQuery = "SELECT id,fname,lname,contact_no,email FROM player "
+           let selectStatementQuery = "SELECT id,fname,contact_no,email FROM player "
        
-          selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a movie object from each result
+          selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a player object from each result
            let player = Player(
            ID: sqlite3_column_int(row, 0),
            fname: String(cString:sqlite3_column_text(row, 1)),
-           lname: String(cString:sqlite3_column_text(row, 2)),
-           contact_no: sqlite3_column_int(row, 3),
-           email: String(cString:sqlite3_column_text(row, 4))
+           contact_no: sqlite3_column_int(row, 2),
+           email: String(cString:sqlite3_column_text(row, 3))
            )
            //add it to the result array
            result += [player]
            })
            return result
        }
-    
     
     
 // Mark:- Ticket related section

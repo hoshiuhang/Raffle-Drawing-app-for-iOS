@@ -8,8 +8,16 @@
 
 import UIKit
 
-class DetailViewController: UIViewController
+class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
     
     // Display raflle detail label
  
@@ -39,6 +47,7 @@ class DetailViewController: UIViewController
     }
     
     
+    @IBOutlet weak var ticketView: UITableView!
     
     var raffle: Raffle? //store the selected Raffle
     
@@ -53,8 +62,9 @@ class DetailViewController: UIViewController
             rPriceLabel.text = String(displayRaffle.price)
             rIDLabel.text = String(displayRaffle.ID)
             
-        }
         
+        
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -80,6 +90,9 @@ class DetailViewController: UIViewController
                  sellTicketScreen.raffle = selectedRaffle
                  }
                }
+    @IBAction func completeSale(segue: UIStoryboardSegue) {
+        print("complete sale")
+    }
     }
    
     //pass the raffle detail to detail view controller

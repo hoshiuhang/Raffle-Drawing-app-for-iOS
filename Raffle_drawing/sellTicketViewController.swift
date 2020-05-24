@@ -81,18 +81,29 @@ var raffle: Raffle?//collect Raffle related detail
         
         let alert = UIAlertController(title: "Total $\(totalPrice) for \(currentTicket) ticket(s)", message: "", preferredStyle: .alert)
 //        let alert = UIAlertController(title: "Total\(totalPrice) for \(currentTicket) ticket", message: "Total $\(totalPrice).", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")}))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            print("Handle Cancel Logic here")}))
-//        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: { _ in
-//            NSLog("The \"OK\" alert occured.")
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"cancel\" alert occured.")}))
+//      alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: { _ in
+//            NSLog("The \"cancel\" alert occured.")
 //        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("Confirm sales.")//log message
+                self.printMessage()
+                print("currentTicket\(currentTicket)")
+                self.performSegue(withIdentifier: "completeSale", sender: self)//go back to perious screen
+                //call the sale function
+                
+               }))
         self.present(alert, animated: true, completion: nil)
+        
+    }//end of the calculate function
+    
+    func printMessage(){
+    
+    
+    print ("test1")
+    
     }
-    
-    
-
 
     /*
     // MARK: - Navigation
