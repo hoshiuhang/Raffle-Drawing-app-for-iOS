@@ -429,14 +429,76 @@
                     <view key="view" contentMode="scaleToFill" id="dfj-T0-NXN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ticket Selling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LW0-qJ-En1">
+                                <rect key="frame" x="63" y="106" width="289" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="51"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fux-Vg-uPl">
+                                <rect key="frame" x="51" y="214.66666666666666" width="19" height="17.666666666666657"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name....." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U0X-OR-hUB">
+                                <rect key="frame" x="78" y="206.33333333333334" width="86" height="34"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="email...." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nbK-Vn-Aat">
+                                <rect key="frame" x="78" y="260" width="265" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="265" id="7Ml-ln-QXD"/>
+                                    <constraint firstAttribute="width" constant="265" id="MZl-I8-4GF"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="paperplane.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="66h-sb-0R1">
+                                <rect key="frame" x="51" y="267.66666666666663" width="21" height="20"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7a0-5k-VV7">
+                                <rect key="frame" x="78" y="302" width="34" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="phone.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="41H-DO-v0P">
+                                <rect key="frame" x="50" y="329" width="21" height="21"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="email...." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6sY-cp-naa">
+                                <rect key="frame" x="78" y="322" width="265" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="265" id="QwK-ky-S6h"/>
+                                    <constraint firstAttribute="width" constant="265" id="wyS-hX-uaA"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fux-Vg-uPl" firstAttribute="leading" secondItem="Sdn-XD-6Jj" secondAttribute="leading" constant="51" id="3zD-Xg-mCm"/>
+                            <constraint firstItem="nbK-Vn-Aat" firstAttribute="leading" secondItem="66h-sb-0R1" secondAttribute="trailing" constant="6" id="CMy-I6-YyN"/>
+                            <constraint firstItem="fux-Vg-uPl" firstAttribute="top" secondItem="LW0-qJ-En1" secondAttribute="bottom" constant="46" id="HdC-VX-h9C"/>
+                            <constraint firstItem="U0X-OR-hUB" firstAttribute="leading" secondItem="fux-Vg-uPl" secondAttribute="trailing" constant="8" id="TAw-10-hD1"/>
+                            <constraint firstItem="7a0-5k-VV7" firstAttribute="top" secondItem="nbK-Vn-Aat" secondAttribute="bottom" constant="8" id="WZ5-Av-vWH"/>
+                            <constraint firstItem="U0X-OR-hUB" firstAttribute="centerY" secondItem="fux-Vg-uPl" secondAttribute="centerY" id="d4h-BK-BKR"/>
+                            <constraint firstItem="LW0-qJ-En1" firstAttribute="top" secondItem="Sdn-XD-6Jj" secondAttribute="top" constant="18" id="ggd-hK-OxF"/>
+                            <constraint firstItem="41H-DO-v0P" firstAttribute="top" secondItem="66h-sb-0R1" secondAttribute="bottom" constant="40.329999999999998" id="hrM-qT-8L6"/>
+                            <constraint firstItem="7a0-5k-VV7" firstAttribute="leading" secondItem="nbK-Vn-Aat" secondAttribute="leading" id="iKG-nZ-Exl"/>
+                            <constraint firstItem="Sdn-XD-6Jj" firstAttribute="trailing" secondItem="LW0-qJ-En1" secondAttribute="trailing" constant="62" id="uFd-KC-vk3"/>
+                            <constraint firstItem="66h-sb-0R1" firstAttribute="leading" secondItem="fux-Vg-uPl" secondAttribute="leading" id="z2r-cs-Wrg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Sdn-XD-6Jj"/>
                     </view>
                     <navigationItem key="navigationItem" id="GnB-1Q-4aZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWp-gx-w2c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4345" y="113"/>
+            <point key="canvasLocation" x="4343.4782608695659" y="112.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3cI-sc-EPd">
@@ -528,6 +590,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="paperplane.fill" catalog="system" width="128" height="121"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="phone.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>
