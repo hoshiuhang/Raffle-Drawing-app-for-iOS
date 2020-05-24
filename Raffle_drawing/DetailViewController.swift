@@ -67,9 +67,23 @@ class DetailViewController: UIViewController
             
             nextScreen.raffleTitle = String(displayRaffle!.title)
             
-            
         }
+        if segue.identifier == "sellTicketSegue"
+               {         print("go to sell ticket")
+                   
+                 guard let sellTicketScreen = segue.destination as? sellTicketViewController else
+                 {
+                     fatalError("unexpected destination: \(segue.destination)")
+                 }
+                
+                 let selectedRaffle = raffle
+                 sellTicketScreen.raffle = selectedRaffle
+                 }
+               }
     }
+   
+    //pass the raffle detail to detail view controller
+       
     /*
     // MARK: - Navigation
 
@@ -80,4 +94,4 @@ class DetailViewController: UIViewController
     }
     */
 
-}
+

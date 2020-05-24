@@ -8,27 +8,44 @@
 
 import UIKit
 
-var raffle: Raffle?//collect Raffle related detail
+
+
 class sellTicketViewController: UIViewController {
 
-//   on screen display and contol area
+var raffle: Raffle?//collect Raffle related detail
+    
+    // on screen display and contol area
     //Player information control
     @IBAction func searchUserBtn(_ sender: UIButton) {
         
     }
     
+
+    @IBOutlet weak var playerNameField: UITextField!
     
     
+    @IBOutlet weak var userEmailField: UITextField!
     
     
+    @IBOutlet weak var userMobileField: UITextField!
     
     
     //selling ticket control
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet var no_of_ticketLabel: UILabel!
     
+    
+    @IBAction func totalPriceBtn(_ sender: UIButton) {
+            calculateTotal()
+    }
+    
+    
+    
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         no_of_ticketLabel.text = Int(sender.value).description
+        
+        
+        
     }
     @IBOutlet weak var singleTicketPriceLabel: UILabel!
     
@@ -39,13 +56,43 @@ class sellTicketViewController: UIViewController {
         stepper.wraps = true
         stepper.autorepeat = true
         stepper.maximumValue = 10
-    
         
+         if let displayRaffle = raffle
+               {
+                   singleTicketPriceLabel.text = String(displayRaffle.price)
+               }
         
         
         // Do any additional setup after loading the view.
     }
-//    private var singleTicketPrice = Int(singleTicketPriceLabel.text!)
+    
+    //calculat the total
+    var currentticket = ""
+    var singleTicketPrice = ""
+    
+    func calculateTotal()
+    {
+        let currentRaffle = raffle
+        let currentTicket:Int = Int(no_of_ticketLabel.text!) ?? 0
+        let singleTickePrice:Int = Int(currentRaffle!.price)
+        let totalPrice = singleTickePrice * currentTicket
+        
+        
+        
+        let alert = UIAlertController(title: "Total $\(totalPrice) for \(currentTicket) ticket(s)", message: "", preferredStyle: .alert)
+//        let alert = UIAlertController(title: "Total\(totalPrice) for \(currentTicket) ticket", message: "Total $\(totalPrice).", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")}))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("Handle Cancel Logic here")}))
+//        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: { _ in
+//            NSLog("The \"OK\" alert occured.")
+//        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+
 
     /*
     // MARK: - Navigation

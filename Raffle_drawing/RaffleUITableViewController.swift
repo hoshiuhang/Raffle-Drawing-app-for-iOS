@@ -84,8 +84,7 @@ var raffles = [Raffle]()
             let selectedRaffle = raffles[indexPath.row]
             detailViewController.raffle = selectedRaffle
             }
-//        if segue.identifier == "addNewRaffle"
-//                  {self.tableView.reloadData()}
+
     }
     
     //delete function
