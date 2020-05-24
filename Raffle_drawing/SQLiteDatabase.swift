@@ -365,7 +365,7 @@ class SQLiteDatabase
                 raffle_id INTEGER,
                 price INTEGER,
                 player_id INTEGER,
-                Date String
+                Date String,
 
             );
         """
@@ -483,9 +483,10 @@ class SQLiteDatabase
        selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a movie object from each result
         let ticket = Ticket(
         ticketID: sqlite3_column_int(row, 0),
-        tPrice: sqlite3_column_int(row, 1),
-        player_id: sqlite3_column_int(row, 2),
-        dateTime: String(cString:sqlite3_column_text(row, 3))
+        raffle_id: sqlite3_column_int(row, 1),
+        tPrice: sqlite3_column_int(row, 2),
+        player_id: sqlite3_column_int(row, 3),
+        dateTime: String(cString:sqlite3_column_text(row, 4))
         )
         //add it to the result array
         result += [ticket]
