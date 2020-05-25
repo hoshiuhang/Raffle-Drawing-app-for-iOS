@@ -7,11 +7,10 @@
 //
 
 import UIKit
-var players = [Player]()
+
 class PlayerUITableViewController: UITableViewController {
 
-   
-    
+  var players = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,38 +20,84 @@ class PlayerUITableViewController: UITableViewController {
          
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-//         self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Right",
-//        style: .plain,
-//        target: self,
-//        action: #selector(rightHandAction))
-//
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Left",
-//        style: .plain,
-//        target: self,
-//        action: #selector(leftHandAction))
-    
-    }
-//    @objc func rightHandAction(){
-//        print("right bar button action")
-//    }
-//    @objc func leftHandAction(){
-//        print("left bar button action")
-//    }
-    // MARK: - Table view data source
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        players = database.selectAllPlayer()
 
+    }
+
+    // MARK: - Table view data source
+    override func viewWillAppear(_ animated: Bool)
+    {
+        
+     let _ : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        self.tableView.reloadData()
+    }
+
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return players.count
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerUITableViewCell", for: indexPath)
+
+        // Configure the cell...
+        let player = players[indexPath.row]
+        if let playerCell = cell as? PlayerUITableViewCell
+        {
+            playerCell.nameLabel.text = player.fname
+            playerCell.emailLabel.text = player.email
+            playerCell.contactLabel.text = String(player.contact_no)
+            
+        }
+
+        return cell
+    }
+//    delete player
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+        {
+            if editingStyle == .delete
+            {
+                let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase") //connect to database
+                let selectedPlayer = players[indexPath.row] //identify the current row
+                database.deletePlayer(ID : selectedPlayer.ID) //pass the raffle id to delete function
+                players.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                
+            
+            }
+            
+       
+    //        else if editingStyle == .insert {
+    //             Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+            
+            
+        }
+    
+    
+    
+    
+    
+    
+    //catch unwind segue
+    @IBAction func addNewPlayer(segue: UIStoryboardSegue){
+        print ("add player view closed")
+       
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        players = database.selectAllPlayer()
+               self.tableView.reloadData()
+        print("table reload")
+        
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

@@ -211,6 +211,35 @@ class SQLiteDatabase
            sqlite3_finalize(statement)
        }
     
+    func deletePlayer(ID:Int32)
+          {
+              /*
+               1.    sqlite3_prepare_v2()
+               2.    sqlite3_step()
+               3.    sqlite3_finalize()
+               */
+              
+              //prepare the statement
+              let query = "DELETE FROM player WHERE ID=\(ID)"
+              var statement: OpaquePointer? = nil
+
+              if sqlite3_prepare_v2(db, query, -1, &statement, nil)     == SQLITE_OK
+              {
+                  //run the query
+                  if sqlite3_step(statement) == SQLITE_DONE {
+                      print("Player with ID\(ID) is Deleted.")
+                  }
+              }
+              else
+              {
+                  print("\(ID) player could not be deleted.")
+                  printCurrentSQLErrorMessage(db)
+              }
+              
+              //clear up
+              sqlite3_finalize(statement)
+          }
+    
     //helper function for handling INSERT statements
     //provide it with a binding function for replacing the ?'s for setting values
     private func insertWithQuery(_ insertStatementQuery : String, bindingFunction:(_ insertStatement: OpaquePointer?)->())
@@ -440,12 +469,12 @@ class SQLiteDatabase
     func insertPlayer (player: Player)
     {
         let insertStatementQuery =
-            "INSERT INTO payer (fname, contact_no,email) VALUES (?, ?, ?, ?, ?);"
+            "INSERT INTO player (fname, contact_no, email) VALUES (?, ?, ?);"
         
         insertWithQuery(insertStatementQuery, bindingFunction: { (insertStatement) in
             sqlite3_bind_text(insertStatement, 1, NSString(string:player.fname).utf8String, -1, nil)
-            sqlite3_bind_int(insertStatement, 3, player.contact_no)
-           sqlite3_bind_text(insertStatement, 2, NSString(string:player.email).utf8String, -1, nil)
+            sqlite3_bind_int(insertStatement, 2, player.contact_no)
+           sqlite3_bind_text(insertStatement, 3, NSString(string:player.email).utf8String, -1, nil)
         })
     }
 //select all players

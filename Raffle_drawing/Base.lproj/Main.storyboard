@@ -620,37 +620,51 @@
         <scene sceneID="ZtY-3a-JO7">
             <objects>
                 <tableViewController storyboardIdentifier="playerList" id="AC9-M7-5W5" customClass="PlayerUITableViewController" customModule="Raffle_drawing" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="AcD-hH-0Q8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="AcD-hH-0Q8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerUITableViewCell" rowHeight="44" id="KVN-2s-t6U" customClass="PlayerUITableViewCell" customModule="Raffle_drawing" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerUITableViewCell" rowHeight="90" id="KVN-2s-t6U" customClass="PlayerUITableViewCell" customModule="Raffle_drawing">
+                                <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KVN-2s-t6U" id="pKw-KO-cPm">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuo-5R-BfO">
-                                            <rect key="frame" x="43" y="11" width="80" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZV-KO-o1q">
+                                            <rect key="frame" x="42" y="11" width="84" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4d-lb-2xD">
-                                            <rect key="frame" x="160" y="11" width="80" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contactLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IN-A4-hmw">
+                                            <rect key="frame" x="230" y="11" width="100" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emailLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ND0-3X-cZb">
+                                            <rect key="frame" x="42" y="49" width="82" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ND0-3X-cZb" firstAttribute="leading" secondItem="AZV-KO-o1q" secondAttribute="leading" id="0YT-lD-QkV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6IN-A4-hmw" secondAttribute="trailing" constant="64" id="8KI-nd-Ao8"/>
+                                        <constraint firstItem="AZV-KO-o1q" firstAttribute="top" secondItem="pKw-KO-cPm" secondAttribute="topMargin" id="B9K-rA-sxp"/>
+                                        <constraint firstItem="6IN-A4-hmw" firstAttribute="leading" secondItem="AZV-KO-o1q" secondAttribute="trailing" constant="104" id="ED6-s1-rFv"/>
+                                        <constraint firstItem="6IN-A4-hmw" firstAttribute="centerY" secondItem="AZV-KO-o1q" secondAttribute="centerY" id="Pfe-La-iwV"/>
+                                        <constraint firstItem="ND0-3X-cZb" firstAttribute="top" secondItem="AZV-KO-o1q" secondAttribute="bottom" constant="17" id="e7R-Cy-cMx"/>
+                                        <constraint firstItem="AZV-KO-o1q" firstAttribute="leading" secondItem="pKw-KO-cPm" secondAttribute="leadingMargin" constant="22" id="k60-G6-7Pg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="firstNameLabel" destination="xuo-5R-BfO" id="8Tt-Tj-85x"/>
-                                    <outlet property="lastNameLabel" destination="w4d-lb-2xD" id="tXH-fD-HFs"/>
+                                    <outlet property="contactLabel" destination="6IN-A4-hmw" id="ZQC-vp-Z5Y"/>
+                                    <outlet property="emailLabel" destination="ND0-3X-cZb" id="5P8-a5-ipj"/>
+                                    <outlet property="nameLabel" destination="AZV-KO-o1q" id="jnH-hf-vEx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -663,7 +677,7 @@
                         <barButtonItem key="rightBarButtonItem" image="person.badge.plus" catalog="system" id="v1u-Cb-cZP">
                             <connections>
                                 <action selector="showPopUp:" destination="AC9-M7-5W5" id="3Pd-2j-Rla"/>
-                                <segue destination="S7A-oG-nWm" kind="show" id="bOR-KB-pzt"/>
+                                <segue destination="S7A-oG-nWm" kind="show" id="xsW-hM-qvD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -672,10 +686,10 @@
             </objects>
             <point key="canvasLocation" x="2363.768115942029" y="-631.47321428571422"/>
         </scene>
-        <!--Popup View Controller-->
+        <!--Add Player View Controller-->
         <scene sceneID="2T8-we-ifU">
             <objects>
-                <viewController storyboardIdentifier="showPopUp" id="S7A-oG-nWm" customClass="popupViewController" customModule="Raffle_drawing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="S7A-oG-nWm" customClass="addPlayerViewController" customModule="Raffle_drawing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iaa-j2-Lpn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -729,9 +743,11 @@
                         <outlet property="emailField" destination="ctd-cD-yLj" id="zb1-MZ-cLU"/>
                         <outlet property="mobileField" destination="Dtg-Ds-rRs" id="KSu-EB-pCj"/>
                         <outlet property="nameField" destination="rJ9-Ui-ySz" id="N6i-z9-l2K"/>
+                        <segue destination="s1r-UQ-8oX" kind="unwind" identifier="addNewPlayer" unwindAction="addNewPlayerWithSegue:" id="Voa-qf-F5J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DpN-41-uPa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="s1r-UQ-8oX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3295.652173913044" y="-631.47321428571422"/>
         </scene>

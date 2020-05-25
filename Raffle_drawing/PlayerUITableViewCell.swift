@@ -11,9 +11,11 @@ import UIKit
 class PlayerUITableViewCell: UITableViewCell {
 
     
-    @IBOutlet var firstNameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet var lastNameLabel: UILabel!
+    @IBOutlet weak var contactLabel: UILabel!
+    
+    @IBOutlet weak var emailLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
