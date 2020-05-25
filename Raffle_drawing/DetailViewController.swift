@@ -10,14 +10,13 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
+    var tickets = [Ticket]()//store ticket detail
+    var raffle: Raffle? //store the selected Raffle
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
     
+    
+    
+  
     
     // Display raflle detail label
  
@@ -46,12 +45,17 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func soldTisketListButton(_ sender: UIButton) {
     }
     
-    
+   //Ticket table
     @IBOutlet weak var ticketView: UITableView!
     
-    var raffle: Raffle? //store the selected Raffle
+    //table cell label
+    
+   
+    
+    
     
     override func viewDidLoad()
+        
     {
         super.viewDidLoad()
 
@@ -61,11 +65,38 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             rTitleLabel.text = displayRaffle.title
             rPriceLabel.text = String(displayRaffle.price)
             rIDLabel.text = String(displayRaffle.ID)
+        }
+        //connect to database
             
         
+         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        tickets = database.selectAllTicket(tableName:String(rTitleLabel.text! ))
         
-        }
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tickets.count
+      }
+      
+      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          let cell = tableView.dequeueReusableCell(withIdentifier: "ticketTableViewCell", for: indexPath)
+
+          // Configure the cell...
+          let ticket = tickets[indexPath.row]
+          if let ticketCell = cell as? ticketTableViewCell
+          {
+              ticketCell.tNumberLabel.text = String(ticket.ticketID)
+              ticketCell.playerNameLabel.text = ticket.playerName
+              ticketCell.tPriceLabel.text = rPriceLabel.text
+              ticketCell.dateTimeLabel.text = ticket.dateTime
+          }
+
+          return cell
+      }
+      
+    
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {     if segue.identifier == "showTicketListSegue"

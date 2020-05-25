@@ -295,7 +295,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateTimeLabel" destination="kMZ-v6-mNh" id="1rL-FJ-9yU"/>
-                                    <outlet property="playerNameLabel" destination="0mp-GO-oVx" id="b3z-so-zet"/>
+                                    <outlet property="playerNameLabel" destination="0mp-GO-oVx" id="D48-dB-A2v"/>
                                     <outlet property="tNumberLabel" destination="npI-fF-GuY" id="eV6-hT-7NS"/>
                                     <outlet property="tPriceLabel" destination="hTh-HQ-Htt" id="jOk-Ka-rHI"/>
                                 </connections>
@@ -386,6 +386,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FXE-LV-Tlv">
+                                <rect key="frame" x="20" y="377" width="364" height="445"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="82" id="GnD-ck-ohN" customClass="ticketTableViewCell" customModule="Raffle_drawing" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="364" height="82"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GnD-ck-ohN" id="k5t-aK-Vpl" customClass="ticketTableViewCell" customModule="Raffle_drawing" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="364" height="82"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Kte-L2-5LT"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2gE-bk-wDJ"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -419,6 +438,7 @@
                         <outlet property="rIDLabel" destination="Ho0-ob-bua" id="ZR4-GE-OXP"/>
                         <outlet property="rPriceLabel" destination="41m-SG-NZt" id="SIv-iK-o7a"/>
                         <outlet property="rTitleLabel" destination="bf8-9b-00B" id="MLb-xE-Ard"/>
+                        <outlet property="ticketView" destination="FXE-LV-Tlv" id="o5O-IG-VZa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

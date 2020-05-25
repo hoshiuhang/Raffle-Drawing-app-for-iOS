@@ -363,8 +363,6 @@ class SQLiteDatabase
         CREATE TABLE '\(raffle.title)'
             (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                raffle_id INTEGER,
-                price INTEGER,
                 player_id INTEGER,
                 Date String,
 
