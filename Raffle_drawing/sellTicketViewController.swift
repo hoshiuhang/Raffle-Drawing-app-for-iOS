@@ -81,12 +81,10 @@ var raffle: Raffle?//collect Raffle related detail
         
         
         let alert = UIAlertController(title: "Total $\(totalPrice) for \(currentTicket) ticket(s)", message: "", preferredStyle: .alert)
-//        let alert = UIAlertController(title: "Total\(totalPrice) for \(currentTicket) ticket", message: "Total $\(totalPrice).", preferredStyle: .alert)
+
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The \"cancel\" alert occured.")}))
-//      alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: { _ in
-//            NSLog("The \"cancel\" alert occured.")
-//        }))
+
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                 NSLog("Confirm sales.")//log message
                 self.printMessage()
