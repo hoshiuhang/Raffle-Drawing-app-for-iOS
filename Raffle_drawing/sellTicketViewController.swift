@@ -102,8 +102,7 @@ var raffle: Raffle?//collect Raffle related detail
     func sellticket(){
         //draw out raffle detail
         let currentRaffle = raffle
-        let raffleTitle = String(currentRaffle!.title)
-        
+        let raffle_id:Int32 = currentRaffle!.ID
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
         let ticketPrice:Int32 = Int32(singleTicketPriceLabel.text!)!
         let playerName:String = playerNameField.text!
@@ -115,7 +114,8 @@ var raffle: Raffle?//collect Raffle related detail
         formatter.dateStyle = .long
         let purchaseTime = formatter.string(from: currentDateTime)
 
-            database.insertTicket(raffleTitle:raffleTitle,ticket:Ticket(tPrice:Int32(ticketPrice),playerName:playerName,dateTime:purchaseTime))
+            database.insertTicket(raffleTitle:raffle_id,ticket:Ticket(tPrice:Int32(ticketPrice),playerName:playerName,dateTime:purchaseTime))
+        database.updateRaffleBy(id: raffle_id, status: 1)
         
     }
    

@@ -46,6 +46,7 @@ class CreateRaffleViewController: UIViewController
         // Do any additional setup after loading the view.
         priceStepper.wraps = false
         priceStepper.autorepeat = true
+        priceStepper.minimumValue = 1
         priceStepper.maximumValue = 100
         
     }
@@ -78,7 +79,10 @@ class CreateRaffleViewController: UIViewController
             price:Int32(rafflePrice),
             max_ticket:Int32(maxTicket),
              description:String(description),
-             prize:String(prizeTitle)))
+             prize:String(prizeTitle),
+             status: 0)
+        
+        )
             
         myraffleUItableViewController?.viewWillAppear(true)
         

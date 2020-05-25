@@ -70,7 +70,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             
         
          let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
-        tickets = database.selectAllTicket(tableName:String(rTitleLabel.text! ))
+        tickets = database.selectAllTicket(tableName:raffle!.ID)
         
         }
     
@@ -130,11 +130,32 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         print("complete sale")
         
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
-        tickets = database.selectAllTicket(tableName:String(rTitleLabel.text! ))
+        let raffleName = raffle!.ID
+        tickets = database.selectAllTicket(tableName:raffleName)
             self.ticketView.reloadData()
                print("table reload")
         
     }
+    
+    func drawingRaffle()
+    {
+        let range:Int = Int(raffle!.max_ticket)
+        let raffleName = raffle!.ID
+        
+        let winningTicketNo:Int32 = Int32(Int.random(in: 1...range))
+        
+         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        let winningticket = database.selectTicketBy(tableName:raffleName,id: winningTicketNo)
+        let winnerName = winningticket?.playerName
+        let winnerNo = winningticket?.ticketID
+        
+        let alert = UIAlertController(title: "Winner", message: "The Winner is \(String(describing: winnerName)), The Ticket no. is \(String(describing: winnerNo))", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     }
    
     //pass the raffle detail to detail view controller

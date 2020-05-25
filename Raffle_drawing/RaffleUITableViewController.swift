@@ -29,8 +29,9 @@ var raffles = [Raffle]()
     override func viewWillAppear(_ animated: Bool)
        {
            
-        let _ : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
-           self.tableView.reloadData()
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        raffles = database.selectAllRaffle()
+               self.tableView.reloadData()
        }
 
     // MARK: - Table view data source
@@ -92,12 +93,41 @@ var raffles = [Raffle]()
     {
         if editingStyle == .delete
         {
-            let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase") //connect to database
+            
+            
             let selectedRaffle = raffles[indexPath.row] //identify the current row
+            let status = selectedRaffle.status
+            let id = selectedRaffle.ID
+            let title = selectedRaffle.title
+            print("the raffle status\(id)")
+            print("the raffle status\(title)")
+            
+//            test if the raffle has been activate
+            print("the raffle status\(status)")
+            if selectedRaffle.status == 1
+            {
+                let alert = UIAlertController(title: "Error", message: "This Raffle has started, it cannot be delete", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+//                if the raffle is not activate
+            else{
+                
+            let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase") //connect to database
             database.deleteRaffle(ID : selectedRaffle.ID) //pass the raffle id to delete function
             raffles.remove(at: indexPath.row) 
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
+                
+            //alert the user the selected raffle has been delete
+            let alert = UIAlertController(title: "Raffle delete", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+            }))
+                self.present(alert, animated: true, completion: nil)
+                
+            }
         
         }
         
