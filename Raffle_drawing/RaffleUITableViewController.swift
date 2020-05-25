@@ -109,16 +109,24 @@ var raffles = [Raffle]()
     }
     
     //catch the unwind Segue function
-    @IBAction func addNewRaffle(segue: UIStoryboardSegue){
-        print ("Second view controller closed")
-       
-        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
-        raffles = database.selectAllRaffle()
-               self.tableView.reloadData()
-        print("table reload")
-        
+//    @IBAction func addNewRaffle(segue: UIStoryboardSegue){
+//        print ("Second view controller closed")
+//       
+//        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+//        raffles = database.selectAllRaffle()
+//               self.tableView.reloadData()
+//        print("table reload")
+//        
+//    }
+    
+    @IBAction func CreateRaffle(segue: UIStoryboardSegue){
+     print ("Second view controller closed")
+    
+     let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+     raffles = database.selectAllRaffle()
+            self.tableView.reloadData()
+     print("table reload")
     }
-
     
     // Override to support conditional editing of the table view.
 //    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

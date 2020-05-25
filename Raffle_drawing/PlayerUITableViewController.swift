@@ -15,11 +15,29 @@ class PlayerUITableViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+         
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+//         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Right",
+//        style: .plain,
+//        target: self,
+//        action: #selector(rightHandAction))
+//
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Left",
+//        style: .plain,
+//        target: self,
+//        action: #selector(leftHandAction))
+    
     }
-
+//    @objc func rightHandAction(){
+//        print("right bar button action")
+//    }
+//    @objc func leftHandAction(){
+//        print("left bar button action")
+//    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

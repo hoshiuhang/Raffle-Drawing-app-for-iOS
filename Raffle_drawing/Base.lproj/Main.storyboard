@@ -68,7 +68,22 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Raffle" image="rectangle.fill.on.rectangle.angled.fill" catalog="system" id="eLM-vb-8Jt"/>
-                    <navigationItem key="navigationItem" title="Raffle Drawing" largeTitleDisplayMode="always" id="DDU-mV-GJB"/>
+                    <navigationItem key="navigationItem" title="Raffle Drawing" largeTitleDisplayMode="always" id="DDU-mV-GJB">
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="EbL-Dz-Xja">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cv3-hV-92M">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="1SK-MM-KNd">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eFQ-6N-fNb">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1h-k3-TJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -637,7 +652,7 @@
             </objects>
             <point key="canvasLocation" x="-362.31884057971018" y="112.50000000000001"/>
         </scene>
-        <!--Player-->
+        <!--Player List-->
         <scene sceneID="ZtY-3a-JO7">
             <objects>
                 <tableViewController id="AC9-M7-5W5" customClass="PlayerUITableViewController" customModule="Raffle_drawing" customModuleProvider="target" sceneMemberID="viewController">
@@ -681,7 +696,14 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Player" image="person.fill" catalog="system" id="n80-89-zne"/>
-                    <navigationItem key="navigationItem" id="SqY-8n-kUS"/>
+                    <navigationItem key="navigationItem" title="Player List" id="NUT-I0-xMj" userLabel="Player List">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="vf0-tB-ODz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="36U-Mk-VV3">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nxr-8X-Oxk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

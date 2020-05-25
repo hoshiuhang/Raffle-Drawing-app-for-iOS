@@ -363,9 +363,9 @@ class SQLiteDatabase
         CREATE TABLE '\(raffle.title)'
             (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                player_id INTEGER,
-                Date String,
-
+                price INTEGER,
+                playerName String,
+                dateTime String,
             );
         """
         createTableWithQuery(createTicketTableQuery, tableName:"\(raffle.title)")
@@ -382,7 +382,7 @@ class SQLiteDatabase
     func selectAllRaffle() -> [Raffle]
     {
         var result = [Raffle]()
-        let selectStatementQuery = "SELECT id,title,price,max_ticket,description,prize FROM raffle "
+        let selectStatementQuery = "SELECT ID,title,price,max_ticket,description,prize FROM raffle "
     
        selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a movie object from each result
         let raffle = Raffle(
@@ -452,7 +452,7 @@ class SQLiteDatabase
     func selectAllPlayer() -> [Player]
        {
            var result = [Player]()
-           let selectStatementQuery = "SELECT id,fname,contact_no,email FROM player "
+           let selectStatementQuery = "SELECT ID,fname,contact_no,email FROM player "
        
           selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a player object from each result
            let player = Player(
@@ -473,15 +473,14 @@ class SQLiteDatabase
     func selectAllTicket(tableName:String) -> [Ticket]
     {
         var result = [Ticket]()
-        let selectStatementQuery = "SELECT id,fname,lname,contact_no,email FROM \(tableName) "
+        let selectStatementQuery = "SELECT ID,price,playName,dateTime From \(tableName)"
     
        selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a movie object from each result
         let ticket = Ticket(
         ticketID: sqlite3_column_int(row, 0),
-        raffle_id: sqlite3_column_int(row, 1),
-        tPrice: sqlite3_column_int(row, 2),
-        player_id: sqlite3_column_int(row, 3),
-        dateTime: String(cString:sqlite3_column_text(row, 4))
+        tPrice: sqlite3_column_int(row, 1),
+        playerName: String(cString:sqlite3_column_text(row, 2)),
+        dateTime: String(cString:sqlite3_column_text(row, 3))
         )
         //add it to the result array
         result += [ticket]
