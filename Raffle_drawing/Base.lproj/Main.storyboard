@@ -306,7 +306,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NBB-qP-pfn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2974" y="889"/>
+            <point key="canvasLocation" x="4158" y="689"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -380,7 +380,6 @@
                                 <state key="normal" title="Sold ticket list" image="list.bullet" catalog="system"/>
                                 <connections>
                                     <action selector="soldTisketListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mNK-zA-jlV"/>
-                                    <segue destination="fka-bl-aTK" kind="show" identifier="showTicketListSegue" id="5fu-gr-ZCM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bha-AU-ydW">
@@ -461,6 +460,7 @@
                                             <outlet property="playerName" destination="H2k-BA-tRb" id="pt5-EP-Y52"/>
                                             <outlet property="ticketPrice" destination="Mbf-do-7dq" id="f9a-C9-VIf"/>
                                             <outlet property="ticket_id" destination="h4n-e8-hyE" id="0Ta-bC-YUO"/>
+                                            <segue destination="fka-bl-aTK" kind="show" id="cy7-f7-0kW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
