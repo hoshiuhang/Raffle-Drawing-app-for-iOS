@@ -26,7 +26,7 @@ class SQLiteDatabase
      
         WARNING: DOING THIS WILL WIPE YOUR DATA, unless you modify how updateDatabase() works.
      */
-    private let DATABASE_VERSION = 14
+    private let DATABASE_VERSION = 15
     
     
     
@@ -365,7 +365,7 @@ class SQLiteDatabase
                 ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                 price INTEGER,
                 playerName String,
-                dateTime String,
+                dateTime String
             );
         """
         createTableWithQuery(createTicketTableQuery, tableName:"\(raffle.title)")

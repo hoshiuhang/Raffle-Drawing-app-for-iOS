@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XXC-y6-CP3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gl2-Ec-xA6">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -16,14 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4IT-4J-LLA">
-                            <rect key="frame" x="0.0" y="146" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title=" Create New Rafle"/>
-                            <connections>
-                                <segue destination="I1L-0a-Km2" kind="show" identifier="createNewRaffleSegue" id="Pt9-Yg-I42"/>
-                            </connections>
-                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RaffleUITableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RaffleUITableViewCell" rowHeight="90" id="2yI-aS-DwQ" userLabel="RaffleUITableViewCell" customClass="RaffleUITableViewCell" customModule="Raffle_drawing" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="90"/>
@@ -67,27 +59,17 @@
                             <outlet property="delegate" destination="3vW-yq-2Fq" id="SQB-qY-m0e"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Raffle" image="rectangle.fill.on.rectangle.angled.fill" catalog="system" id="eLM-vb-8Jt"/>
                     <navigationItem key="navigationItem" title="Raffle Drawing" largeTitleDisplayMode="always" id="DDU-mV-GJB">
-                        <rightBarButtonItems>
-                            <barButtonItem style="plain" id="EbL-Dz-Xja">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cv3-hV-92M">
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                </button>
-                            </barButtonItem>
-                            <barButtonItem style="plain" id="1SK-MM-KNd">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eFQ-6N-fNb">
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                </button>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Add Raffle" id="aPM-yo-qhE">
+                            <connections>
+                                <segue destination="I1L-0a-Km2" kind="show" id="kqu-qu-KBv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1h-k3-TJb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1455.072463768116" y="112.5"/>
+            <point key="canvasLocation" x="2365.217391304348" y="112.5"/>
         </scene>
         <!--Create Raffle View Controller-->
         <scene sceneID="5xS-p4-4FO">
@@ -124,13 +106,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Ticket:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dir-x5-Qi6">
-                                <rect key="frame" x="39" y="307" width="131" height="21"/>
+                                <rect key="frame" x="43" y="307" width="131" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle discription:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImY-QF-pgf">
-                                <rect key="frame" x="41" y="412" width="129.66666666666666" height="21"/>
+                                <rect key="frame" x="41" y="412" width="133.66666666666666" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="LDc-HK-c0T"/>
                                 </constraints>
@@ -145,7 +127,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OY2-eX-cd6">
-                                <rect key="frame" x="41" y="775" width="332" height="42"/>
+                                <rect key="frame" x="41" y="726" width="332" height="42"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="Confirm">
@@ -161,7 +143,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvj-sc-s8Q">
-                                <rect key="frame" x="276" y="231" width="14" height="27"/>
+                                <rect key="frame" x="280" y="231" width="14" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -179,7 +161,7 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnG-YQ-s0M">
-                                <rect key="frame" x="260" y="307" width="46" height="21"/>
+                                <rect key="frame" x="264" y="307" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -366,14 +348,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhq-MA-nnC">
-                                <rect key="frame" x="44" y="339" width="131" height="30"/>
+                                <rect key="frame" x="44" y="290" width="131" height="30"/>
                                 <state key="normal" title="Edit Raffle Settings"/>
                                 <connections>
                                     <action selector="editingRaffleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rrI-ud-Gho"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTZ-mQ-Mpl">
-                                <rect key="frame" x="262" y="253" width="71" height="30"/>
+                                <rect key="frame" x="262" y="204" width="71" height="30"/>
                                 <state key="normal" title="Sell Ticket"/>
                                 <connections>
                                     <action selector="sellTicketButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IG3-OL-Z4S"/>
@@ -381,7 +363,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yga-m5-zZp">
-                                <rect key="frame" x="262" y="339" width="97" height="30"/>
+                                <rect key="frame" x="262" y="290" width="97" height="30"/>
                                 <state key="normal" title="Sold ticket list"/>
                                 <connections>
                                     <action selector="soldTisketListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mNK-zA-jlV"/>
@@ -389,7 +371,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bha-AU-ydW">
-                                <rect key="frame" x="44" y="253" width="80" height="30"/>
+                                <rect key="frame" x="44" y="204" width="80" height="30"/>
                                 <state key="normal" title="Draw Raffle"/>
                                 <connections>
                                     <action selector="drawRaffleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DjK-lE-6Ys"/>
@@ -458,7 +440,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2973.913043478261" y="112.5"/>
+            <point key="canvasLocation" x="3884.057971014493" y="112.5"/>
         </scene>
         <!--Sell Ticket View Controller-->
         <scene sceneID="HAH-LM-inP">
@@ -556,19 +538,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lO-gw-RfW">
-                                <rect key="frame" x="29" y="640" width="11" height="21"/>
+                                <rect key="frame" x="29" y="591" width="11" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ticketPriceLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCB-B9-vDg">
-                                <rect key="frame" x="44" y="640" width="123" height="21"/>
+                                <rect key="frame" x="44" y="591" width="123" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="per ticket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60G-9c-kWs">
-                                <rect key="frame" x="171" y="640" width="73" height="21"/>
+                                <rect key="frame" x="171" y="591" width="73" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -632,25 +614,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWp-gx-w2c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="r6K-Uy-quC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4343.4782608695659" y="112.5"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3cI-sc-EPd">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XXC-y6-CP3" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="41K-uy-NEo">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="gl2-Ec-xA6" kind="relationship" relationship="rootViewController" id="FxY-YL-bpC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k0f-oW-HQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-362.31884057971018" y="112.50000000000001"/>
+            <point key="canvasLocation" x="5253.6231884057979" y="112.5"/>
         </scene>
         <!--Player List-->
         <scene sceneID="ZtY-3a-JO7">
@@ -695,19 +659,13 @@
                             <outlet property="delegate" destination="AC9-M7-5W5" id="Umf-Uw-h89"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Player" image="person.fill" catalog="system" id="n80-89-zne"/>
                     <navigationItem key="navigationItem" title="Player List" id="NUT-I0-xMj" userLabel="Player List">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="vf0-tB-ODz">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="36U-Mk-VV3">
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="person.badge.plus" catalog="system" id="v1u-Cb-cZP"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nxr-8X-Oxk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1454" y="-631"/>
+            <point key="canvasLocation" x="2363.768115942029" y="-631.47321428571422"/>
         </scene>
         <!--Raffle Drawing-->
         <scene sceneID="eEC-Rj-SOc">
@@ -721,19 +679,58 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="3vW-yq-2Fq" kind="relationship" relationship="viewControllers" id="NH2-0Y-wvN"/>
-                        <segue destination="AC9-M7-5W5" kind="relationship" relationship="viewControllers" id="zJm-00-UJ0"/>
+                        <segue destination="7NW-tj-95Y" kind="relationship" relationship="viewControllers" id="NH2-0Y-wvN"/>
+                        <segue destination="uI1-T3-M7y" kind="relationship" relationship="viewControllers" id="zJm-00-UJ0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fie-Xd-gMM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="544.92753623188412" y="112.5"/>
         </scene>
+        <!--Player-->
+        <scene sceneID="F56-vo-xYW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uI1-T3-M7y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Player" image="person.fill" catalog="system" id="n80-89-zne"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WCP-84-Rsl">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AC9-M7-5W5" kind="relationship" relationship="rootViewController" id="i6L-cU-WZI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3iY-7z-iGc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1453.6231884057972" y="-631.47321428571422"/>
+        </scene>
+        <!--Raffle-->
+        <scene sceneID="fi5-nP-BrQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7NW-tj-95Y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Raffle" image="rectangle.fill.on.rectangle.angled.fill" catalog="system" id="eLM-vb-8Jt"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yuf-tv-02N">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3vW-yq-2Fq" kind="relationship" relationship="rootViewController" id="fT4-eo-UY8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7z-G3-gk1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1455.072463768116" y="112.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
         <image name="paperplane.fill" catalog="system" width="128" height="121"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.badge.plus" catalog="system" width="128" height="116"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="phone.circle" catalog="system" width="128" height="121"/>
         <image name="rectangle.fill.on.rectangle.angled.fill" catalog="system" width="128" height="101"/>
