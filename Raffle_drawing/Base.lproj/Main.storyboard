@@ -439,14 +439,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fux-Vg-uPl">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fux-Vg-uPl">
                                 <rect key="frame" x="51" y="214.66666666666666" width="19" height="17.666666666666657"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name....." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U0X-OR-hUB">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U0X-OR-hUB">
                                 <rect key="frame" x="78" y="206.33333333333334" width="86" height="34"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" textContentType="name"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="paperplane.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="66h-sb-0R1">
                                 <rect key="frame" x="51" y="268.33333333333337" width="21" height="20"/>
@@ -460,16 +460,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="phone.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="41H-DO-v0P">
                                 <rect key="frame" x="50" y="329.66666666666669" width="19.666666666666671" height="19"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mobile..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6sY-cp-naa">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="123456789" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6sY-cp-naa">
                                 <rect key="frame" x="76.666666666666686" y="321.66666666666669" width="265" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="fbG-yc-iJP"/>
                                 </constraints>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a83-wX-Zc5">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a83-wX-Zc5">
                                 <rect key="frame" x="250" y="213" width="92" height="22"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -492,14 +492,14 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="email...." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nbK-Vn-Aat">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="abc@email.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nbK-Vn-Aat">
                                 <rect key="frame" x="78" y="261" width="265" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="PBr-sx-484"/>
                                 </constraints>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="wrr-t8-pUR">
                                 <rect key="frame" x="160" y="522" width="94" height="32"/>
@@ -538,6 +538,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2I-as-MXS">
+                                <rect key="frame" x="280" y="635" width="72" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Total Price"/>
+                                <connections>
+                                    <action selector="totalPriceBtn:" destination="ZGh-CS-IXd" eventType="touchUpInside" id="Su0-TV-Dvc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -578,11 +586,16 @@
                     <navigationItem key="navigationItem" id="GnB-1Q-4aZ"/>
                     <connections>
                         <outlet property="no_of_ticketLabel" destination="do1-Cd-7jw" id="2zj-Uz-fS0"/>
-                        <outlet property="singleTicketPriceLabel" destination="60G-9c-kWs" id="INE-wc-rFr"/>
+                        <outlet property="playerNameField" destination="U0X-OR-hUB" id="8kb-Re-p0R"/>
+                        <outlet property="singleTicketPriceLabel" destination="wCB-B9-vDg" id="mAh-B3-L1T"/>
                         <outlet property="stepper" destination="wrr-t8-pUR" id="Y3E-iD-wrg"/>
+                        <outlet property="userEmailField" destination="nbK-Vn-Aat" id="D6f-KR-Hgg"/>
+                        <outlet property="userMobileField" destination="6sY-cp-naa" id="H0Y-Pc-czo"/>
+                        <segue destination="r6K-Uy-quC" kind="unwind" identifier="completeSale" unwindAction="completeSaleWithSegue:" id="Qpf-od-ve5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWp-gx-w2c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="r6K-Uy-quC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4343.4782608695659" y="112.5"/>
         </scene>
