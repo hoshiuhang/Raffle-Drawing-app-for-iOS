@@ -480,7 +480,7 @@ class SQLiteDatabase
 //select all players
     func selectAllPlayer() -> [Player]
        {
-           var result = [Player]()
+        var result = [Player]()
            let selectStatementQuery = "SELECT ID,fname,contact_no,email FROM player "
        
           selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a player object from each result
@@ -493,8 +493,27 @@ class SQLiteDatabase
            //add it to the result array
            result += [player]
            })
-           return result
+        return result
        }
+    //select one player
+        func selectPlayerBy(name:String) -> Player?
+        {
+            var result : Player?
+            let selectStatementQuery = "SELECT id,fname,contact_no,email FROM player WHERE fname = \(name) "
+    
+            selectWithQuery(selectStatementQuery, eachRow: { (row) in
+                //create a movie object from each result
+               let player = Player(
+                   ID: sqlite3_column_int(row, 0),
+                   fname: String(cString:sqlite3_column_text(row, 1)),
+                   contact_no: sqlite3_column_int(row, 2),
+                   email: String(cString:sqlite3_column_text(row, 3))
+               )
+               //add it to the result array
+               result = player
+               })
+               return result
+        }
     
     
 // Mark:- Ticket related section
@@ -502,7 +521,7 @@ class SQLiteDatabase
     func selectAllTicket(tableName:String) -> [Ticket]
     {
         var result = [Ticket]()
-        let selectStatementQuery = "SELECT ID,price,playName,dateTime From \(tableName)"
+        let selectStatementQuery = "SELECT ID,price,playerName,dateTime From \(tableName)"
     
        selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a movie object from each result
         let ticket = Ticket(
@@ -516,8 +535,18 @@ class SQLiteDatabase
         })
         return result
     }
-
-        
+//insert new ticket
+    func insertTicket (raffleTitle:String, ticket: Ticket)
+        {
+            let insertStatementQuery =
+                "INSERT INTO \(raffleTitle) (price,playerName, dateTime) VALUES (?, ?, ?);"
+            
+            insertWithQuery(insertStatementQuery, bindingFunction: { (insertStatement) in
+                sqlite3_bind_int(insertStatement, 1, ticket.tPrice)
+                sqlite3_bind_text(insertStatement, 2, NSString(string:ticket.playerName).utf8String, -1, nil)
+                sqlite3_bind_text(insertStatement, 3, NSString(string:ticket.dateTime).utf8String, -1, nil)
+            })
+        }
         
         
         

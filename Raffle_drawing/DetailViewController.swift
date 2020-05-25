@@ -72,23 +72,24 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
          let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
         tickets = database.selectAllTicket(tableName:String(rTitleLabel.text! ))
         
-    }
+        }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tickets.count
-      }
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return tickets.count
+        }
       
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          let cell = tableView.dequeueReusableCell(withIdentifier: "ticketTableViewCell", for: indexPath)
+        
+          let cell = tableView.dequeueReusableCell(withIdentifier: "ticketTableViewCell2", for: indexPath)
 
           // Configure the cell...
           let ticket = tickets[indexPath.row]
-          if let ticketCell = cell as? ticketTableViewCell
+          if let ticketCell = cell as? ticketTableViewCell2
           {
-              ticketCell.tNumberLabel.text = String(ticket.ticketID)
-              ticketCell.playerNameLabel.text = ticket.playerName
-              ticketCell.tPriceLabel.text = rPriceLabel.text
-              ticketCell.dateTimeLabel.text = ticket.dateTime
+              ticketCell.ticket_id.text = String(ticket.ticketID)
+              ticketCell.playerName.text = ticket.playerName
+              ticketCell.ticketPrice.text = rPriceLabel.text
+              ticketCell.dateTime.text = String(ticket.dateTime)
           }
 
           return cell
@@ -97,18 +98,20 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     
-    
+    //press information function
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {     if segue.identifier == "showTicketListSegue"
-        {         print("Second view controller segue called")
-            
-            let displayRaffle = raffle //Get the current raffle name
-            
-            let nextScreen = segue.destination as! ticketTableViewController //select target screen
-            
-            nextScreen.raffleTitle = String(displayRaffle!.title)
-            
-        }
+    {
+//        if segue.identifier == "showTicketListSegue"
+//        {         print("Second view controller segue called")
+//
+//            let displayRaffle = raffle //Get the current raffle name
+//
+//            let nextScreen = segue.destination as! ticketTableViewController //select target screen
+//
+//            nextScreen.raffleTitle = String(displayRaffle!.title)
+//
+//        }
+        //send raffle detail to sellticket view
         if segue.identifier == "sellTicketSegue"
                {         print("go to sell ticket")
                    
@@ -121,8 +124,16 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                  sellTicketScreen.raffle = selectedRaffle
                  }
                }
+    
+    //catch unwind segue
     @IBAction func completeSale(segue: UIStoryboardSegue) {
         print("complete sale")
+        
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        tickets = database.selectAllTicket(tableName:String(rTitleLabel.text! ))
+            self.ticketView.reloadData()
+               print("table reload")
+        
     }
     }
    

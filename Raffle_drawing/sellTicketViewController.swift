@@ -87,7 +87,7 @@ var raffle: Raffle?//collect Raffle related detail
 
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                 NSLog("Confirm sales.")//log message
-                self.printMessage()
+                self.sellticket()
                 print("currentTicket\(currentTicket)")
                 self.performSegue(withIdentifier: "completeSale", sender: self)//go back to perious screen
                 //call the sale function
@@ -97,13 +97,28 @@ var raffle: Raffle?//collect Raffle related detail
         
     }//end of the calculate function
     
-    func printMessage(){
-    
-    
-    print ("test1")
-    
-    }
+   
+    //insert ticket function
+    func sellticket(){
+        //draw out raffle detail
+        let currentRaffle = raffle
+        let raffleTitle = String(currentRaffle!.title)
+        
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        let ticketPrice:Int32 = Int32(singleTicketPriceLabel.text!)!
+        let playerName:String = playerNameField.text!
+        
+        //get the current time
+        let currentDateTime = Date()
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .long
+        let purchaseTime = formatter.string(from: currentDateTime)
 
+            database.insertTicket(raffleTitle:raffleTitle,ticket:Ticket(tPrice:Int32(ticketPrice),playerName:playerName,dateTime:purchaseTime))
+        
+    }
+   
     /*
     // MARK: - Navigation
 
