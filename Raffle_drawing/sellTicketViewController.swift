@@ -56,6 +56,7 @@ var raffle: Raffle?//collect Raffle related detail
         stepper.wraps = true
         stepper.autorepeat = true
         stepper.maximumValue = 10
+    
         
          if let displayRaffle = raffle
                {
