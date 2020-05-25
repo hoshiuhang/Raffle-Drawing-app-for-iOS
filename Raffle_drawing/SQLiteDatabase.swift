@@ -427,6 +427,22 @@ class SQLiteDatabase
         })
         return result
     }
+//    update the Raffle
+    func updateRaffleBy(id:Int32,status:Int32)
+        {
+            var result : Raffle?
+
+            let updateStatementQuery = "UPDATE raffle SET status= ? WHERE ID = \(id) "
+    
+            updateWithQuery(updateStatementQuery, bindingFunction:{(updateStatment) in
+                //create a movie object from each result
+                sqlite3_bind_int(updateStatementQuery, , Int32(status))
+               //add it to the result array
+               })
+               
+        }
+    
+    
     
     // Query 1 movie
 //    func selectMovieBy(id:Int32) -> Raffle?

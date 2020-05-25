@@ -14,4 +14,5 @@ public struct Raffle
     var max_ticket:Int32
     var description:String
     var prize:String
+    
 }
