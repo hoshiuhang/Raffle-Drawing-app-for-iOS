@@ -31,7 +31,10 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     @IBAction func drawRaffleButton(_ sender: UIButton) {
+        drawingRaffle()
     }
+    
+    
     
     
     @IBAction func sellTicketButton(_ sender: UIButton) {
@@ -143,8 +146,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let raffleName = raffle!.ID
         
         let winningTicketNo:Int32 = Int32(Int.random(in: 1...range))
-        
-         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        print(winningTicketNo)
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
         let winningticket = database.selectTicketBy(tableName:raffleName,id: winningTicketNo)
         let winnerName = winningticket?.playerName
         let winnerNo = winningticket?.ticketID
