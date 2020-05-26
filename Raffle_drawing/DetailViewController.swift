@@ -72,6 +72,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         //connect to database
             
         
+        
+        
          let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
         tickets = database.selectAllTicket(tableName:raffle!.ID)
         
@@ -142,7 +144,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func drawingRaffle()
     {
-        let range:Int = Int(raffle!.max_ticket)
+        let range:Int = Int(raffle!.ticketSold)
         let raffleName = raffle!.ID
         
         let winningTicketNo:Int32 = Int32(Int.random(in: 1...range))
@@ -152,7 +154,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let winnerName = winningticket?.playerName
         let winnerNo = winningticket?.ticketID
         
-        let alert = UIAlertController(title: "Winner", message: "The Winner is \(String(describing: winnerName)), The Ticket no. is \(String(describing: winnerNo))", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Winner", message: "The Winner is \(winnerName ?? "nobody"), The Ticket no. is \(winnerNo ?? 0)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
         NSLog("The \"OK\" alert occured.")
         }))
