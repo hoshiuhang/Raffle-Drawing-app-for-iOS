@@ -15,4 +15,6 @@ public struct Raffle
     var description:String
     var prize:String
     var status:Int32 //1 = activate,0 = not activate
+    var ticketSold:Int32
+    
 }

@@ -101,22 +101,35 @@ var raffle: Raffle?//collect Raffle related detail
     //insert ticket function
     func sellticket(){
         //draw out raffle detail
-        let currentRaffle = raffle
-        let raffle_id:Int32 = currentRaffle!.ID
+        let currentRaffle = raffle //use this view raffle id
+        
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        let raffle2 = database.selectRaffleBy(id:currentRaffle!.ID )//get the updated data from database
+        
+        print("this iscurrent ticket sold\(String(describing: raffle2?.ticketSold))")
+        let raffle_id:Int32 = raffle2!.ID
+        print("this iscurrent id\(String(describing: raffle2?.ID))")
+        var ticketSold:Int32 = raffle2!.ticketSold
+        
         let ticketPrice:Int32 = Int32(singleTicketPriceLabel.text!)!
         let playerName:String = playerNameField.text!
-        
+        var totalTicket:Int = Int(no_of_ticketLabel.text!) ?? 1
         //get the current time
         let currentDateTime = Date()
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         formatter.dateStyle = .long
         let purchaseTime = formatter.string(from: currentDateTime)
-
-            database.insertTicket(raffleTitle:raffle_id,ticket:Ticket(tPrice:Int32(ticketPrice),playerName:playerName,dateTime:purchaseTime))
-        database.updateRaffleBy(id: raffle_id, status: 1)
         
+        let i = 0
+        while i<totalTicket
+        {
+        
+        database.insertTicket(raffleTitle:raffle_id,ticket:Ticket(tPrice:Int32(ticketPrice),playerName:playerName,dateTime:purchaseTime))
+           ticketSold+=1
+        database.updateRaffleBy(id: raffle_id, status: 1,ticketSold:ticketSold)
+            totalTicket-=1
+        }
     }
    
     /*

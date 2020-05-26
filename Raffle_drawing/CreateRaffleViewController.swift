@@ -80,7 +80,8 @@ class CreateRaffleViewController: UIViewController
             max_ticket:Int32(maxTicket),
              description:String(description),
              prize:String(prizeTitle),
-             status: 0)
+             status: 0,
+             ticketSold:0)
         
         )
             
