@@ -68,6 +68,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             rIDLabel.text = String(displayRaffle.ID)
             
         }
+        
+ 
+        
         //connect to database
         
         
@@ -140,6 +143,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
         let raffleName = raffle!.ID
         tickets = database.selectAllTicket(tableName:raffleName)
+        
             self.ticketView.reloadData()
                print("table reload")
         
@@ -147,12 +151,15 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func drawingRaffle()
     {
-        let range:Int = Int(raffle!.ticketSold)
-        let raffleName = raffle!.ID
         
+        let raffleName = raffle!.ID//get current raffle id
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")//connect to database
+        
+        let updateRaffle = database.selectRaffleBy(id: raffleName)//get updated detail
+        let range:Int = Int(updateRaffle!.ticketSold)
         let winningTicketNo:Int32 = Int32(Int.random(in: 1...range))
-        print(winningTicketNo)
-        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+
+        
         let winningticket = database.selectTicketBy(tableName:raffleName,id: winningTicketNo)
         let winnerName = winningticket?.playerName
         let winnerNo = winningticket?.ticketID

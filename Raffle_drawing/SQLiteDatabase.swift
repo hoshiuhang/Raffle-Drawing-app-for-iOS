@@ -26,7 +26,7 @@ class SQLiteDatabase
      
         WARNING: DOING THIS WILL WIPE YOUR DATA, unless you modify how updateDatabase() works.
      */
-    private let DATABASE_VERSION = 19
+    private let DATABASE_VERSION = 1
     
     
     
@@ -78,6 +78,7 @@ class SQLiteDatabase
         //e.g. dropTable(tableName:"Movie")
         dropTable(tableName:"raffle")
         dropTable(tableName:"player")
+
     }
     
     /* --------------------------------*/
@@ -153,6 +154,7 @@ class SQLiteDatabase
         You should call this function from dropTables()
      */
     
+    
     private func dropTable(tableName:String)
     {
         /*
@@ -181,7 +183,38 @@ class SQLiteDatabase
         //clear up
         sqlite3_finalize(statement)
     }
-   
+    //    delete ticket table
+    func deleteTicketTable(ID:Int32)
+          {
+              /*
+               1.    sqlite3_prepare_v2()
+               2.    sqlite3_step()
+               3.    sqlite3_finalize()
+               */
+              
+              //prepare the statement
+              let query = "DROP TABLE IF EXISTS 'table\(ID)'"
+                 var statement: OpaquePointer? = nil
+
+                 if sqlite3_prepare_v2(db, query, -1, &statement, nil)     == SQLITE_OK
+                 {
+                     //run the query
+                     if sqlite3_step(statement) == SQLITE_DONE {
+                         print("\(ID) table deleted.")
+                     }
+                 }
+                 else
+                 {
+                     print("\(ID) table could not be deleted.")
+                     printCurrentSQLErrorMessage(db)
+                 }
+                 
+                 //clear up
+                 sqlite3_finalize(statement)
+          }
+    
+    
+   //delete Raffle
     func deleteRaffle(ID:Int32)
        {
            /*
@@ -210,6 +243,8 @@ class SQLiteDatabase
            //clear up
            sqlite3_finalize(statement)
        }
+    
+
     
     func deletePlayer(ID:Int32)
           {
