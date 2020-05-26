@@ -45,8 +45,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
-    @IBAction func soldTisketListButton(_ sender: UIButton) {
-    }
     
    //Ticket table
     @IBOutlet weak var ticketView: UITableView!
@@ -68,14 +66,16 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             rTitleLabel.text = displayRaffle.title
             rPriceLabel.text = String(displayRaffle.price)
             rIDLabel.text = String(displayRaffle.ID)
+            
         }
         //connect to database
-            
+        
+        
         
         
         
          let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
-        tickets = database.selectAllTicket(tableName:raffle!.ID)
+            tickets = database.selectAllTicket(tableName:raffle!.ID)
         
         }
     
@@ -99,36 +99,39 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
 
           return cell
       }
-      
+          
     
     
     
     //press information function
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-//        if segue.identifier == "showTicketListSegue"
-//        {         print("Second view controller segue called")
+        if segue.identifier == "editRaffleSegue"
+        {
+            print("go to edit Raffle")
+             guard let editingRaffleScreen = segue.destination as? raffleEditingViewController else
+            {
+                fatalError("unexpected destination: \(segue.destination)")
+            }
+           
+            let selectedRaffle = raffle
+            editingRaffleScreen.raffle = selectedRaffle
+//                            
 //
-//            let displayRaffle = raffle //Get the current raffle name
-//
-//            let nextScreen = segue.destination as! ticketTableViewController //select target screen
-//
-//            nextScreen.raffleTitle = String(displayRaffle!.title)
-//
-//        }
+        }
         //send raffle detail to sellticket view
         if segue.identifier == "sellTicketSegue"
-               {         print("go to sell ticket")
-                   
-                 guard let sellTicketScreen = segue.destination as? sellTicketViewController else
-                 {
-                     fatalError("unexpected destination: \(segue.destination)")
-                 }
-                
-                 let selectedRaffle = raffle
-                 sellTicketScreen.raffle = selectedRaffle
-                 }
-               }
+       {         print("go to sell ticket")
+           
+         guard let sellTicketScreen = segue.destination as? sellTicketViewController else
+         {
+             fatalError("unexpected destination: \(segue.destination)")
+         }
+        
+         let selectedRaffle = raffle
+         sellTicketScreen.raffle = selectedRaffle
+         }
+       }
     
     //catch unwind segue
     @IBAction func completeSale(segue: UIStoryboardSegue) {
