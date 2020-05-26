@@ -856,7 +856,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Rg-U5-AIQ">
-                                <rect key="frame" x="74" y="722" width="266" height="42"/>
+                                <rect key="frame" x="50" y="722" width="330" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -924,7 +924,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUh-bO-QXk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4275" y="921"/>
+            <point key="canvasLocation" x="4273.913043478261" y="920.75892857142856"/>
         </scene>
         <!--Editing Raffle Detail-->
         <scene sceneID="Bsu-ja-NZ4">
@@ -998,6 +998,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="priceStepperAction:" destination="3CB-9l-QG5" eventType="valueChanged" id="4n8-YX-A0R"/>
+                                    <action selector="priceStepperControl:" destination="3CB-9l-QG5" eventType="valueChanged" id="lKv-de-Gmm"/>
                                     <action selector="stepper:" destination="3CB-9l-QG5" eventType="valueChanged" id="ySz-5D-oGN"/>
                                 </connections>
                             </stepper>
@@ -1005,8 +1006,7 @@
                                 <rect key="frame" x="39" y="343" width="336" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="maxTicketSliderAction:" destination="3CB-9l-QG5" eventType="valueChanged" id="5wc-49-32w"/>
-                                    <action selector="slider:" destination="3CB-9l-QG5" eventType="valueChanged" id="ars-XT-iMF"/>
+                                    <action selector="maxTicketSlider:" destination="3CB-9l-QG5" eventType="valueChanged" id="Wzd-1y-iGH"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxc-Yd-XLA">
@@ -1030,11 +1030,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="HuN-39-aNn">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minimumValue="50" maximumValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="HuN-39-aNn">
                                 <rect key="frame" x="260" y="616" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="winnerStepper:" destination="3CB-9l-QG5" eventType="valueChanged" id="1xd-Xw-Sob"/>
+                                    <action selector="winnerStepperControl:" destination="3CB-9l-QG5" eventType="valueChanged" id="YRZ-3v-ukt"/>
                                 </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Maximum Ticket:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHH-Db-gR6">
@@ -1058,12 +1058,14 @@
                     <connections>
                         <outlet property="descriptionField" destination="7y3-bV-sTl" id="GWo-vy-gTL"/>
                         <outlet property="maxTicketLabel" destination="fxc-Yd-XLA" id="Lz3-II-SkY"/>
-                        <outlet property="maxTicketSlider" destination="Zhe-gp-qqW" id="895-y4-wN2"/>
+                        <outlet property="maxTicketOutlet" destination="Zhe-gp-qqW" id="NWU-eZ-Ch1"/>
                         <outlet property="priceLabel" destination="gGC-ls-GdX" id="OA6-U2-TKa"/>
                         <outlet property="priceStepper" destination="6Q9-m1-XBF" id="fYi-uL-Br3"/>
+                        <outlet property="priceStepperOutlet" destination="6Q9-m1-XBF" id="4Ir-Yk-rlL"/>
                         <outlet property="prizeField" destination="Zie-lo-gpf" id="Ze1-5h-BGZ"/>
                         <outlet property="titleField" destination="UVf-fu-JIO" id="XtB-Ag-iVe"/>
                         <outlet property="winnerLabel" destination="cdK-y2-W2h" id="g62-lb-MnI"/>
+                        <outlet property="winnerStepperOutlet" destination="HuN-39-aNn" id="7OO-dB-eB7"/>
                         <segue destination="gJc-hb-qwV" kind="unwind" identifier="addNewRaffle" unwindAction="addNewRaffleWithSegue:" id="bU5-rS-Zsv"/>
                     </connections>
                 </viewController>
