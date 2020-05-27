@@ -166,23 +166,49 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")//connect to database
         
         let updateRaffle = database.selectRaffleBy(id: raffleName)//get updated detail
-        let winnerNo:Int32 = updateRaffle!.winnerNo
-        
-        let range:Int = Int(updateRaffle!.ticketSold)//use sold ticket number as the drawing range
-//        let winningTicketNo:Int32 = Int32(Int.random(in: 1...range))
+        var winnerNo:Int32 = updateRaffle!.winnerNo //no of round need to draw
+        var drawNo = [Int32]() //the random number being draw
+        var winners=[Ticket]() //array of winner
+        let range:Int = Int(updateRaffle!.ticketSold) //drawing range
+        if range == 0{
+            let alert = UIAlertController(title: "Alert !!", message: "No ticket being sold. Cannot start the drawing", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else
+        {
         var winningTicketNo:Int32 = 0
+        var test = false
+        while 0 < winnerNo
+        {
+//        range = Int(updateRaffle!.ticketSold)//use sold ticket number as the drawing range
+            repeat{
+            winningTicketNo = Int32(Int.random(in: 1...range))
+                test = drawNo.contains(winningTicketNo)
+                print("test result\(test)")
+            } while test == true
+            drawNo.append(winningTicketNo)
+            winnerNo-=1
+        }
         
-
+        print("This is drawing no. \(drawNo)")
+         print("This is the range \(range)")
         
-        let winningticket = database.selectTicketBy(tableName:raffleName,id: winningTicketNo)
-        let winnerName = winningticket?.playerName
-        let winningTicket = winningticket?.ticketID
+        for id in drawNo{
+        let winningticket = database.selectTicketBy(tableName:raffleName,id:id)
+            winners.append(winningticket!)
+        }
+        let winnerCount = winners.count
+        print("this is winner count\(winnerCount)")
         
-        let alert = UIAlertController(title: "Winner", message: "The Winner is \(winnerName ?? "nobody"), The Ticket no. is \(winningTicket ?? 0)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-        NSLog("The \"OK\" alert occured.")
-        }))
-        self.present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: "Winner", message: "The Winner is \(winnerName ?? "nobody"), The Ticket no. is \(winningTicket ?? 0)", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+//        NSLog("The \"OK\" alert occured.")
+//        }))
+//        self.present(alert, animated: true, completion: nil)
+        }
     }
     
     }
