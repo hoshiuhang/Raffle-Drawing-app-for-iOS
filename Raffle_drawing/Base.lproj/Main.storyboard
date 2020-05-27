@@ -299,7 +299,7 @@
                                 <state key="normal" title="Edit Raffle Settings"/>
                                 <connections>
                                     <action selector="editingRaffleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EYK-xe-VuO"/>
-                                    <segue destination="3CB-9l-QG5" kind="show" id="i8S-Gd-2C7"/>
+                                    <segue destination="3CB-9l-QG5" kind="show" identifier="goToRaffleEditingSegue" id="i8S-Gd-2C7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTZ-mQ-Mpl">
@@ -934,56 +934,28 @@
         <!--Editing Raffle Detail-->
         <scene sceneID="Bsu-ja-NZ4">
             <objects>
-                <viewController id="3CB-9l-QG5" customClass="RaffleEditingViewController2" customModule="Raffle_drawing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3CB-9l-QG5" customClass="raffleEditingViewController2" customModule="Raffle_drawing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AXW-Tq-qIN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVf-fu-JIO">
-                                <rect key="frame" x="41" y="163" width="332" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jZ-Zc-9dP">
                                 <rect key="frame" x="41" y="139" width="38" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVf-fu-JIO">
+                                <rect key="frame" x="41" y="163" width="332" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ticket Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0M-AC-bXX">
                                 <rect key="frame" x="40.333333333333343" y="231" width="95" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle discription:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLE-GG-5Y2">
-                                <rect key="frame" x="41" y="412" width="151" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prize:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUD-jz-XxN">
-                                <rect key="frame" x="40.999999999999993" y="496" width="68.333333333333314" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6f-Op-rjK">
-                                <rect key="frame" x="41" y="726" width="332" height="42"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <state key="normal" title="update">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="confirmButton:" destination="3CB-9l-QG5" eventType="touchUpInside" id="Jug-bA-SHo"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7y3-bV-sTl">
-                                <rect key="frame" x="41" y="438" width="332" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGC-ls-GdX">
                                 <rect key="frame" x="302" y="224" width="10.333333333333314" height="27"/>
                                 <constraints>
@@ -999,18 +971,46 @@
                                     <action selector="priceStepperControl:" destination="3CB-9l-QG5" eventType="valueChanged" id="de4-uk-59Q"/>
                                 </connections>
                             </stepper>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="50" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="Zhe-gp-qqW">
-                                <rect key="frame" x="39" y="343" width="336" height="31"/>
-                                <connections>
-                                    <action selector="maxTicketSlider:" destination="3CB-9l-QG5" eventType="valueChanged" id="Wzd-1y-iGH"/>
-                                </connections>
-                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Ticket:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHH-Db-gR6">
+                                <rect key="frame" x="40" y="307" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxc-Yd-XLA">
                                 <rect key="frame" x="285" y="307" width="42.333333333333314" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="50" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="Zhe-gp-qqW">
+                                <rect key="frame" x="39" y="343" width="336" height="31"/>
+                                <connections>
+                                    <action selector="maxTicketSlider:" destination="3CB-9l-QG5" eventType="valueChanged" id="Wzd-1y-iGH"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raffle discription:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLE-GG-5Y2">
+                                <rect key="frame" x="41" y="412" width="151" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7y3-bV-sTl">
+                                <rect key="frame" x="41" y="438" width="332" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prize:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUD-jz-XxN">
+                                <rect key="frame" x="40.999999999999993" y="496" width="68.333333333333314" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zie-lo-gpf">
+                                <rect key="frame" x="41" y="525" width="332" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner(s):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiV-Gw-xDU">
                                 <rect key="frame" x="41" y="581" width="80" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1029,17 +1029,17 @@
                                     <action selector="winnerStepperControl:" destination="3CB-9l-QG5" eventType="valueChanged" id="YRZ-3v-ukt"/>
                                 </connections>
                             </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Ticket:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHH-Db-gR6">
-                                <rect key="frame" x="40" y="307" width="131" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zie-lo-gpf">
-                                <rect key="frame" x="41" y="525" width="332" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6f-Op-rjK">
+                                <rect key="frame" x="41" y="726" width="332" height="42"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="update">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateBtn:" destination="3CB-9l-QG5" eventType="touchUpInside" id="AlG-IE-Nkw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -1091,8 +1091,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Editing Raffle Detail" id="Zfl-ZO-H3E"/>
                     <connections>
-                        <outlet property="descriptionField" destination="7y3-bV-sTl" id="GWo-vy-gTL"/>
-                        <outlet property="maxTicketLabel" destination="fxc-Yd-XLA" id="Lz3-II-SkY"/>
+                        <outlet property="descriptionField" destination="7y3-bV-sTl" id="XZQ-En-I1r"/>
+                        <outlet property="maxTicketLabel" destination="fxc-Yd-XLA" id="Vjt-yb-gzP"/>
                         <outlet property="maxTicketOutlet" destination="Zhe-gp-qqW" id="NWU-eZ-Ch1"/>
                         <outlet property="priceLabel" destination="gGC-ls-GdX" id="OA6-U2-TKa"/>
                         <outlet property="priceStepperOutlet" destination="6Q9-m1-XBF" id="9qB-Ca-Mrj"/>
@@ -1100,11 +1100,9 @@
                         <outlet property="titleField" destination="UVf-fu-JIO" id="XtB-Ag-iVe"/>
                         <outlet property="winnerLabel" destination="cdK-y2-W2h" id="g62-lb-MnI"/>
                         <outlet property="winnerStepperOutlet" destination="HuN-39-aNn" id="7OO-dB-eB7"/>
-                        <segue destination="gJc-hb-qwV" kind="unwind" identifier="addNewRaffle" unwindAction="addNewRaffleWithSegue:" id="bU5-rS-Zsv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hU5-1f-BvD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="gJc-hb-qwV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3295.652173913044" y="920.75892857142856"/>
         </scene>

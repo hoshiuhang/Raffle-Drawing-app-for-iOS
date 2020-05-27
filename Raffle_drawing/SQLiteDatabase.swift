@@ -520,8 +520,7 @@ class SQLiteDatabase
             sqlite3_bind_int(updateStatment, 2, Int32(raffle.price))
             sqlite3_bind_int(updateStatment, 3, Int32(raffle.max_ticket))
             sqlite3_bind_text(updateStatment, 4, NSString(string:raffle.description).utf8String, -1, nil)
-            sqlite3_bind_text(updateStatment, 5, NSString(string:raffle.prize).utf8String, -1,
-            nil)
+            sqlite3_bind_text(updateStatment, 5, NSString(string:raffle.prize).utf8String, -1, nil)
             sqlite3_bind_int(updateStatment, 6, Int32(raffle.winnerNo))
            })
            
@@ -533,7 +532,7 @@ class SQLiteDatabase
     func selectRaffleBy(id:Int32) -> Raffle?
     {
         var result : Raffle?
-        let selectStatementQuery = "SELECT ID,title,price,max_ticket,description,prize,status,ticketSold FROM raffle WHERE ID = \(id) "
+        let selectStatementQuery = "SELECT ID,title,price,max_ticket,description,prize,status,ticketSold,winnerNo FROM raffle WHERE ID = \(id) "
 
         selectWithQuery(selectStatementQuery, eachRow: { (row) in
             //create a movie object from each result
@@ -546,7 +545,7 @@ class SQLiteDatabase
                       prize: String(cString:sqlite3_column_text(row, 5)),
                       status: Int32(sqlite3_column_int(row, 6)),
                       ticketSold: Int32(sqlite3_column_int(row, 7)),
-                      winnerNo: Int32(sqlite3_column_int(row, 7))
+                      winnerNo: Int32(sqlite3_column_int(row, 8))
            )
            //add it to the result array
            result = raffle
@@ -649,7 +648,7 @@ class SQLiteDatabase
     func insertTicket (raffleTitle:Int32, ticket: Ticket)
         {
             let insertStatementQuery =
-                "INSERT INTO table\(raffleTitle) (price,playerName,playerEmail,playerContact, dateTime) VALUES (?, ?, ?);"
+                "INSERT INTO table\(raffleTitle) (price,playerName,playerEmail,playerContact, dateTime) VALUES (?, ?, ?,?,?);"
             
             insertWithQuery(insertStatementQuery, bindingFunction: { (insertStatement) in
                 sqlite3_bind_int(insertStatement, 1, ticket.tPrice)

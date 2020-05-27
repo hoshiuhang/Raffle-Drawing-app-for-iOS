@@ -109,18 +109,28 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     //press information function
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.identifier == "editRaffleSegue"
+        if segue.identifier == "goToRaffleEditingSegue"
         {
+            let selectedRaffle = raffle
+            let selectedRaffleStatus = raffle?.status
+            if selectedRaffleStatus == 0
+            {
             print("go to edit Raffle")
-             guard let editingRaffleScreen = segue.destination as? raffleEditingViewController else
+             guard let editingRaffleScreen = segue.destination as? raffleEditingViewController2 else
             {
                 fatalError("unexpected destination: \(segue.destination)")
             }
-           
-            let selectedRaffle = raffle
             editingRaffleScreen.raffle = selectedRaffle
-//                            
-//
+            }
+            else
+            {
+                let alert = UIAlertController(title: "ALert", message: "This raffle has started, detail cannot be change", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+
         }
         //send raffle detail to sellticket view
         if segue.identifier == "sellTicketSegue"
@@ -156,15 +166,19 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")//connect to database
         
         let updateRaffle = database.selectRaffleBy(id: raffleName)//get updated detail
-        let range:Int = Int(updateRaffle!.ticketSold)
-        let winningTicketNo:Int32 = Int32(Int.random(in: 1...range))
+        let winnerNo:Int32 = updateRaffle!.winnerNo
+        
+        let range:Int = Int(updateRaffle!.ticketSold)//use sold ticket number as the drawing range
+//        let winningTicketNo:Int32 = Int32(Int.random(in: 1...range))
+        var winningTicketNo:Int32 = 0
+        
 
         
         let winningticket = database.selectTicketBy(tableName:raffleName,id: winningTicketNo)
         let winnerName = winningticket?.playerName
-        let winnerNo = winningticket?.ticketID
+        let winningTicket = winningticket?.ticketID
         
-        let alert = UIAlertController(title: "Winner", message: "The Winner is \(winnerName ?? "nobody"), The Ticket no. is \(winnerNo ?? 0)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Winner", message: "The Winner is \(winnerName ?? "nobody"), The Ticket no. is \(winningTicket ?? 0)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
         NSLog("The \"OK\" alert occured.")
         }))

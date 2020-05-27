@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RaffleEditingViewController2: UIViewController {
+class raffleEditingViewController2: UIViewController {
 //  create raffle variable ti stroe current raffle information
     
     var raffle: Raffle? //store the selected Raffle
@@ -34,11 +34,13 @@ class RaffleEditingViewController2: UIViewController {
             
             prizeField.text = newRaffle?.prize
             
-//            let currentWinner:Int32 = newRaffle.winnerNo
-//            winnerLabel.text = String(currentWinner)
+            let currentWinnerNo:Int32 = newRaffle!.winnerNo
+            winnerLabel.text = String(currentWinnerNo)
+        
             
            print("this is \(String(describing: newRaffle?.title))")
            print("this is \(String(describing: newRaffle?.description))")
+            print("this is winnerno\(String(describing: newRaffle?.winnerNo))")
            }
         
         
@@ -95,8 +97,10 @@ class RaffleEditingViewController2: UIViewController {
     @IBAction func winnerStepperControl(_ sender: UIStepper) {
         winnerLabel.text = Int32(sender.value).description
     }
-    
-    
+    @IBAction func updateBtn(_ sender: UIButton) {
+        
+        
+    }
     
 
     /*
