@@ -36,9 +36,12 @@ class CreateRaffleViewController: UIViewController
     
     
     
-    
-    
-    
+    @IBOutlet weak var winnerNoLabel: UILabel!
+    @IBOutlet weak var winnerNoStepperOutlet: UIStepper!
+    @IBAction func winnerNoStepper(_ sender: UIStepper) {
+        let currentValue = Int(sender.value)
+                   winnerNoLabel.text = "\(currentValue)"
+    }
     
     var myraffleUItableViewController: RaffleUITableViewController?
     override func viewDidLoad() {
@@ -73,7 +76,7 @@ class CreateRaffleViewController: UIViewController
         let maxTicket:Int32 = Int32(maxTicketLabel.text!) ?? 100
         let description: String = (descriptionField.text!)
         let prizeTitle:String = prizeField.text!
-
+        let winnerNo:Int32 = Int32(winnerNoLabel.text!) ?? 1
 
         database.insert(raffle:Raffle(title:String(raffleTitle),
             price:Int32(rafflePrice),
@@ -81,7 +84,9 @@ class CreateRaffleViewController: UIViewController
              description:String(description),
              prize:String(prizeTitle),
              status: 0,
-             ticketSold:0)
+             ticketSold:0,
+            winnerNo:winnerNo
+            )
         
         )
             

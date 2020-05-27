@@ -110,10 +110,12 @@ var raffle: Raffle?//collect Raffle related detail
         let raffle_id:Int32 = raffle2!.ID
         print("this iscurrent id\(String(describing: raffle2?.ID))")
         var ticketSold:Int32 = raffle2!.ticketSold
-        
+        var max_ticket:Int32 = raffle2!.max_ticket
         let ticketPrice:Int32 = Int32(singleTicketPriceLabel.text!)!
         let playerName:String = playerNameField.text!
-        var totalTicket:Int = Int(no_of_ticketLabel.text!) ?? 1
+        let playerEmail:String = userEmailField.text ?? "not provide"
+        let playerContact:Int32 = Int32(userMobileField.text!) ?? 0
+        var totalTicketSold:Int = Int(no_of_ticketLabel.text!) ?? 1
         //get the current time
         let currentDateTime = Date()
         let formatter = DateFormatter()
@@ -122,13 +124,14 @@ var raffle: Raffle?//collect Raffle related detail
         let purchaseTime = formatter.string(from: currentDateTime)
         
         let i = 0
-        while i<totalTicket
+        while i<totalTicketSold
         {
         
-        database.insertTicket(raffleTitle:raffle_id,ticket:Ticket(tPrice:Int32(ticketPrice),playerName:playerName,dateTime:purchaseTime))
+            database.insertTicket(raffleTitle:raffle_id,ticket:Ticket(tPrice:Int32(ticketPrice),playerName:playerName,playerEmail:playerEmail,playerContact:playerContact,dateTime:purchaseTime))
            ticketSold+=1
-        database.updateRaffleBy(id: raffle_id, status: 1,ticketSold:ticketSold)
-            totalTicket-=1
+            max_ticket-=1
+        database.updateRaffleBy(id: raffle_id, status: 1,ticketSold:ticketSold,max_ticket:max_ticket)
+            totalTicketSold-=1
         }
     }
    

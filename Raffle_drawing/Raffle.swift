@@ -16,5 +16,6 @@ public struct Raffle
     var prize:String
     var status:Int32 // 0 = not activate, 1 = activate
     var ticketSold:Int32
+    var winnerNo:Int32 //up to 3 winner
     
 }

@@ -10,8 +10,55 @@ import UIKit
 
 class RaffleEditingViewController2: UIViewController {
 //  create raffle variable ti stroe current raffle information
+    
     var raffle: Raffle? //store the selected Raffle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let displayRaffle = raffle
+           {
+           let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+           
+            let newRaffle = database.selectRaffleBy(id: displayRaffle.ID) //get the latest raffle information
+           
+            titleField.text = newRaffle?.title
+           
+            descriptionField.text = newRaffle?.description
+            
+            let currentPrice:Int32 = newRaffle!.price
+            priceLabel.text = String(currentPrice)
+            
+            let currentMax:Int32 = newRaffle!.max_ticket
+            maxTicketLabel.text = String(currentMax)
+            
+            prizeField.text = newRaffle?.prize
+            
+//            let currentWinner:Int32 = newRaffle.winnerNo
+//            winnerLabel.text = String(currentWinner)
+            
+           print("this is \(String(describing: newRaffle?.title))")
+           print("this is \(String(describing: newRaffle?.description))")
+           }
+        
+        
+        
+        
+    priceStepperOutlet.wraps = true
+    priceStepperOutlet.autorepeat = true
+    priceStepperOutlet.minimumValue = 1
+    priceStepperOutlet.maximumValue = 100
+
+    
+    winnerStepperOutlet.wraps = true
+    winnerStepperOutlet.autorepeat = true
+    winnerStepperOutlet.minimumValue = 1
+    winnerStepperOutlet.maximumValue = 100
+    }
+    
+    
 //    Interface element
+    
     @IBOutlet weak var titleField: UITextField!
 //    Price adjust
     @IBOutlet weak var priceLabel: UILabel!
@@ -49,20 +96,7 @@ class RaffleEditingViewController2: UIViewController {
         winnerLabel.text = Int32(sender.value).description
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    priceStepperOutlet.wraps = true
-    priceStepperOutlet.autorepeat = true
-    priceStepperOutlet.minimumValue = 1
-    priceStepperOutlet.maximumValue = 100
-
     
-    winnerStepperOutlet.wraps = true
-    winnerStepperOutlet.autorepeat = true
-    winnerStepperOutlet.minimumValue = 1
-    winnerStepperOutlet.maximumValue = 100
-    }
     
 
     /*

@@ -14,6 +14,9 @@ class RaffleUITableViewController: UITableViewController
 var raffles = [Raffle]()
    
     
+    
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

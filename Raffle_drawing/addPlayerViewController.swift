@@ -52,7 +52,7 @@ class addPlayerViewController: UIViewController {
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
        
         
-        database.insertPlayer(player:Player(fname:String(playerName!),contact_no:Int32(Int(playerMobile)),email:String(playerEmail)))
+        database.insertPlayer(player:Player(playerName:String(playerName!),playerEmail:String(playerEmail),playerContact:Int32(Int(playerMobile))))
         
         print("add one player")
         

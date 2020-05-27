@@ -170,15 +170,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZg-5v-ea6">
-                                <rect key="frame" x="303" y="581" width="8" height="21"/>
+                                <rect key="frame" x="303" y="581" width="14" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7Un-fC-OWo">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="7Un-fC-OWo">
                                 <rect key="frame" x="260" y="616" width="94" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="winnerNoStepper:" destination="I1L-0a-Km2" eventType="valueChanged" id="78y-9m-Q4W"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Ticket:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dir-x5-Qi6">
                                 <rect key="frame" x="40" y="307" width="131" height="21"/>
@@ -237,13 +240,15 @@
                         <outlet property="priceStepper" destination="lAN-Rl-wT3" id="eCA-R6-bUi"/>
                         <outlet property="prizeField" destination="ats-2a-9MW" id="De1-XH-wFR"/>
                         <outlet property="titleField" destination="tAe-kj-xfd" id="NNl-BP-hmD"/>
+                        <outlet property="winnerNoLabel" destination="gZg-5v-ea6" id="Ic9-zT-QLa"/>
+                        <outlet property="winnerNoStepperOutlet" destination="7Un-fC-OWo" id="eAa-Lh-0Up"/>
                         <segue destination="hdA-DU-LBf" kind="unwind" identifier="addNewRaffle" unwindAction="addNewRaffleWithSegue:" id="tPD-c2-gMd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8H-04-L1p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="hdA-DU-LBf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2365" y="922"/>
+            <point key="canvasLocation" x="2363.768115942029" y="921.42857142857133"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -989,7 +994,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="top" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6Q9-m1-XBF">
-                                <rect key="frame" x="260" y="259" width="94" height="32"/>
+                                <rect key="frame" x="260" y="259" width="94.333333333333314" height="32"/>
                                 <connections>
                                     <action selector="priceStepperControl:" destination="3CB-9l-QG5" eventType="valueChanged" id="de4-uk-59Q"/>
                                 </connections>
@@ -1013,13 +1018,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdK-y2-W2h">
-                                <rect key="frame" x="260" y="581" width="94" height="27"/>
+                                <rect key="frame" x="260" y="581" width="94.333333333333314" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="HuN-39-aNn">
-                                <rect key="frame" x="260" y="616" width="94" height="32"/>
+                                <rect key="frame" x="260" y="616" width="94.333333333333314" height="32"/>
                                 <connections>
                                     <action selector="winnerStepperControl:" destination="3CB-9l-QG5" eventType="valueChanged" id="YRZ-3v-ukt"/>
                                 </connections>

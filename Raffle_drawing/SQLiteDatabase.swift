@@ -26,7 +26,7 @@ class SQLiteDatabase
      
         WARNING: DOING THIS WILL WIPE YOUR DATA, unless you modify how updateDatabase() works.
      */
-    private let DATABASE_VERSION = 31
+    private let DATABASE_VERSION = 33
     
     
     
@@ -423,7 +423,8 @@ class SQLiteDatabase
                 description CHAR(255),
                 prize CHAR(255),
                 status INTEGER,
-                ticketSold INTEGER
+                ticketSold INTEGER,
+                winnerNo INTEGER
                 
             );
         """
@@ -434,7 +435,7 @@ class SQLiteDatabase
     func insert(raffle: Raffle)
     {
         let insertStatementQuery =
-            "INSERT INTO raffle (title, price, max_ticket, description, prize,status,ticketSold) VALUES (?, ?, ?, ?, ?,?,?);"
+            "INSERT INTO raffle (title, price, max_ticket, description, prize,status,ticketSold,winnerNo) VALUES (?, ?, ?, ?, ?,?,?,?);"
         
         insertWithQuery(insertStatementQuery, bindingFunction: { (insertStatement) in
             sqlite3_bind_text(insertStatement, 1, NSString(string:raffle.title).utf8String, -1, nil)
@@ -445,6 +446,7 @@ class SQLiteDatabase
         nil)
              sqlite3_bind_int(insertStatement, 6, Int32(raffle.status))
             sqlite3_bind_int(insertStatement, 7, Int32(raffle.ticketSold))
+            sqlite3_bind_int(insertStatement, 8, Int32(raffle.winnerNo))
         })
         
         
@@ -457,6 +459,8 @@ class SQLiteDatabase
                 ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                 price INTEGER,
                 playerName String,
+                playerEmail String,
+                playerContact INTEGER,
                 dateTime String
             );
         """
@@ -485,7 +489,8 @@ class SQLiteDatabase
         description: String(cString:sqlite3_column_text(row, 4)),
         prize: String(cString:sqlite3_column_text(row, 5)),
         status: Int32(sqlite3_column_int(row, 6)),
-        ticketSold: Int32(sqlite3_column_int(row, 7))
+        ticketSold: Int32(sqlite3_column_int(row, 7)),
+        winnerNo: Int32(sqlite3_column_int(row, 8))
         )
         //add it to the result array
         result += [raffle]
@@ -493,16 +498,34 @@ class SQLiteDatabase
         return result
     }
 //    update the Raffle
-    func updateRaffleBy(id:Int32,status:Int32,ticketSold:Int32)
+    func updateRaffleBy(id:Int32,status:Int32,ticketSold:Int32,max_ticket:Int32)
         {
-            let updateStatementQuery = "UPDATE raffle SET status= ? , ticketSold=? WHERE ID = \(id) "
+            let updateStatementQuery = "UPDATE raffle SET status= ? , ticketSold=?, max_ticket=? WHERE ID = \(id) "
             updateWithQuery(updateStatementQuery, bindingFunction:{(updateStatment) in
                 //upate Raffle status
                 sqlite3_bind_int(updateStatment,1, Int32(status))
                 sqlite3_bind_int(updateStatment,2, Int32(ticketSold))
+                sqlite3_bind_int(updateStatment,3, Int32(max_ticket))
                })
                
         }
+    
+    func editingRaffleDetailBy(raffle: Raffle)
+    {
+        let id = raffle.ID
+        let updateStatementQuery = "UPDATE raffle SET title=?, price=?, max_ticket=?, description=?, prize=?, winnerNo=? WHERE ID = \(id) "
+        updateWithQuery(updateStatementQuery, bindingFunction:{(updateStatment) in
+            //upate Raffle status
+            sqlite3_bind_text(updateStatment, 1, NSString(string:raffle.title).utf8String, -1, nil)
+            sqlite3_bind_int(updateStatment, 2, Int32(raffle.price))
+            sqlite3_bind_int(updateStatment, 3, Int32(raffle.max_ticket))
+            sqlite3_bind_text(updateStatment, 4, NSString(string:raffle.description).utf8String, -1, nil)
+            sqlite3_bind_text(updateStatment, 5, NSString(string:raffle.prize).utf8String, -1,
+            nil)
+            sqlite3_bind_int(updateStatment, 6, Int32(raffle.winnerNo))
+           })
+           
+    }
     
     
     
@@ -522,7 +545,8 @@ class SQLiteDatabase
                       description: String(cString:sqlite3_column_text(row, 4)),
                       prize: String(cString:sqlite3_column_text(row, 5)),
                       status: Int32(sqlite3_column_int(row, 6)),
-                      ticketSold: Int32(sqlite3_column_int(row, 7))
+                      ticketSold: Int32(sqlite3_column_int(row, 7)),
+                      winnerNo: Int32(sqlite3_column_int(row, 7))
            )
            //add it to the result array
            result = raffle
@@ -538,10 +562,9 @@ class SQLiteDatabase
                CREATE TABLE player
                (
                    ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                   fname CHAR(255),
-                   contact_no INTEGER,
-                   email CHAR(255)
-                   
+                   playerName CHAR(255),
+                   playerEmail CHAR(255),
+                   playerContact INTEGER
                );
            """
            createTableWithQuery(createPlayerTableQuery, tableName: "player")
@@ -551,12 +574,15 @@ class SQLiteDatabase
     func insertPlayer (player: Player)
     {
         let insertStatementQuery =
-            "INSERT INTO player (fname, contact_no, email) VALUES (?, ?, ?);"
+            "INSERT INTO player (playerName,playerEmail,playerContact) VALUES (?, ?, ?);"
         
         insertWithQuery(insertStatementQuery, bindingFunction: { (insertStatement) in
-            sqlite3_bind_text(insertStatement, 1, NSString(string:player.fname).utf8String, -1, nil)
-            sqlite3_bind_int(insertStatement, 2, player.contact_no)
-           sqlite3_bind_text(insertStatement, 3, NSString(string:player.email).utf8String, -1, nil)
+            
+            sqlite3_bind_text(insertStatement, 1, NSString(string:player.playerName).utf8String, -1, nil)
+            
+            sqlite3_bind_text(insertStatement, 2, NSString(string:player.playerEmail).utf8String, -1, nil)
+            
+            sqlite3_bind_int(insertStatement, 3, player.playerContact)
         })
     }
 //select all players
@@ -568,9 +594,9 @@ class SQLiteDatabase
           selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a player object from each result
            let player = Player(
            ID: sqlite3_column_int(row, 0),
-           fname: String(cString:sqlite3_column_text(row, 1)),
-           contact_no: sqlite3_column_int(row, 2),
-           email: String(cString:sqlite3_column_text(row, 3))
+           playerName: String(cString:sqlite3_column_text(row, 1)),
+           playerEmail: String(cString:sqlite3_column_text(row, 2)),
+           playerContact: sqlite3_column_int(row, 3)
            )
            //add it to the result array
            result += [player]
@@ -603,14 +629,16 @@ class SQLiteDatabase
     func selectAllTicket(tableName:Int32) -> [Ticket]
     {
         var result = [Ticket]()
-        let selectStatementQuery = "SELECT ID,price,playerName,dateTime From table\(tableName)"
+        let selectStatementQuery = "SELECT ID,price,playerName,playerEmail,playerContact,dateTime From table\(tableName)"
     
        selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a movie object from each result
         let ticket = Ticket(
         ticketID: sqlite3_column_int(row, 0),
         tPrice: sqlite3_column_int(row, 1),
         playerName: String(cString:sqlite3_column_text(row, 2)),
-        dateTime: String(cString:sqlite3_column_text(row, 3))
+        playerEmail: String(cString:sqlite3_column_text(row, 3)),
+        playerContact: sqlite3_column_int(row, 4),
+        dateTime: String(cString:sqlite3_column_text(row, 5))
         )
         //add it to the result array
         result += [ticket]
@@ -621,12 +649,14 @@ class SQLiteDatabase
     func insertTicket (raffleTitle:Int32, ticket: Ticket)
         {
             let insertStatementQuery =
-                "INSERT INTO table\(raffleTitle) (price,playerName, dateTime) VALUES (?, ?, ?);"
+                "INSERT INTO table\(raffleTitle) (price,playerName,playerEmail,playerContact, dateTime) VALUES (?, ?, ?);"
             
             insertWithQuery(insertStatementQuery, bindingFunction: { (insertStatement) in
                 sqlite3_bind_int(insertStatement, 1, ticket.tPrice)
                 sqlite3_bind_text(insertStatement, 2, NSString(string:ticket.playerName).utf8String, -1, nil)
-                sqlite3_bind_text(insertStatement, 3, NSString(string:ticket.dateTime).utf8String, -1, nil)
+                sqlite3_bind_text(insertStatement, 3, NSString(string:ticket.playerEmail).utf8String, -1, nil)
+                sqlite3_bind_int(insertStatement, 4, ticket.playerContact)
+                sqlite3_bind_text(insertStatement, 5, NSString(string:ticket.dateTime).utf8String, -1, nil)
             })
         }
     
@@ -642,7 +672,9 @@ class SQLiteDatabase
                    ticketID: sqlite3_column_int(row, 0),
                    tPrice: sqlite3_column_int(row, 1),
                    playerName: String(cString:sqlite3_column_text(row, 2)),
-                   dateTime: String(cString:sqlite3_column_text(row, 3))
+                   playerEmail: String(cString:sqlite3_column_text(row, 3)),
+                   playerContact: sqlite3_column_int(row, 4),
+                   dateTime: String(cString:sqlite3_column_text(row, 5))
                )
                //add it to the result array
                result = ticket

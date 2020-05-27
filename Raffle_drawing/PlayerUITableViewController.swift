@@ -53,9 +53,9 @@ class PlayerUITableViewController: UITableViewController {
         let player = players[indexPath.row]
         if let playerCell = cell as? PlayerUITableViewCell
         {
-            playerCell.nameLabel.text = player.fname
-            playerCell.emailLabel.text = player.email
-            playerCell.contactLabel.text = String(player.contact_no)
+            playerCell.nameLabel.text = player.playerName
+            playerCell.emailLabel.text = player.playerEmail
+            playerCell.contactLabel.text = String(player.playerContact)
             
         }
 

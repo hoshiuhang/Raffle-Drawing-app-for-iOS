@@ -8,8 +8,11 @@
 public struct Player
 {
     var ID:Int32 = -1
-    var fname:String
-    var contact_no:Int32
-    var email:String
+    
+    var playerName:String
+    
+    var playerEmail:String
+    
+    var playerContact:Int32
    
 }
