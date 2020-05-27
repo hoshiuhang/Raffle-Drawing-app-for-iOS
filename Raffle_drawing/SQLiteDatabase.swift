@@ -26,7 +26,7 @@ class SQLiteDatabase
      
         WARNING: DOING THIS WILL WIPE YOUR DATA, unless you modify how updateDatabase() works.
      */
-    private let DATABASE_VERSION = 1
+    private let DATABASE_VERSION = 31
     
     
     
@@ -78,7 +78,7 @@ class SQLiteDatabase
         //e.g. dropTable(tableName:"Movie")
         dropTable(tableName:"raffle")
         dropTable(tableName:"player")
-
+        deleteAllTicketTable()
     }
     
     /* --------------------------------*/
@@ -186,12 +186,7 @@ class SQLiteDatabase
     //    delete ticket table
     func deleteTicketTable(ID:Int32)
           {
-              /*
-               1.    sqlite3_prepare_v2()
-               2.    sqlite3_step()
-               3.    sqlite3_finalize()
-               */
-              
+            
               //prepare the statement
               let query = "DROP TABLE IF EXISTS 'table\(ID)'"
                  var statement: OpaquePointer? = nil
@@ -212,6 +207,34 @@ class SQLiteDatabase
                  //clear up
                  sqlite3_finalize(statement)
           }
+    func deleteAllTicketTable()
+    {
+        var ID = 0
+        let i=20
+        while i > ID {
+        //prepare the statement
+        let query = "DROP TABLE IF EXISTS 'table\(ID)'"
+           var statement: OpaquePointer? = nil
+
+           if sqlite3_prepare_v2(db, query, -1, &statement, nil)     == SQLITE_OK
+           {
+               //run the query
+               if sqlite3_step(statement) == SQLITE_DONE {
+                   print("\(ID) table deleted.")
+               }
+           }
+           else
+           {
+               print("\(ID) table could not be deleted.")
+               printCurrentSQLErrorMessage(db)
+           }
+           
+           //clear up
+           sqlite3_finalize(statement)
+            
+        ID+=1
+        }
+    }
     
     
    //delete Raffle
@@ -245,7 +268,7 @@ class SQLiteDatabase
        }
     
 
-    
+//
     func deletePlayer(ID:Int32)
           {
               /*
@@ -253,7 +276,7 @@ class SQLiteDatabase
                2.    sqlite3_step()
                3.    sqlite3_finalize()
                */
-              
+
               //prepare the statement
               let query = "DELETE FROM player WHERE ID=\(ID)"
               var statement: OpaquePointer? = nil
@@ -270,7 +293,7 @@ class SQLiteDatabase
                   print("\(ID) player could not be deleted.")
                   printCurrentSQLErrorMessage(db)
               }
-              
+
               //clear up
               sqlite3_finalize(statement)
           }
