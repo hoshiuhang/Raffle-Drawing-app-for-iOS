@@ -726,6 +726,27 @@ class SQLiteDatabase
                })
                
         }
+    
+    func selectWonTicket(tableName:Int32) -> [Ticket]
+    {
+        var result = [Ticket]()
+        let selectStatementQuery = "SELECT ID,price,playerName,playerEmail,playerContact,dateTime,status From table\(tableName) where status=1"
+    
+       selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a movie object from each result
+        let ticket = Ticket(
+        ticketID: sqlite3_column_int(row, 0),
+        tPrice: sqlite3_column_int(row, 1),
+        playerName: String(cString:sqlite3_column_text(row, 2)),
+        playerEmail: String(cString:sqlite3_column_text(row, 3)),
+        playerContact: sqlite3_column_int(row, 4),
+        dateTime: String(cString:sqlite3_column_text(row, 5)),
+        status: sqlite3_column_int(row, 6))
+        
+        //add it to the result array
+        result += [ticket]
+        })
+        return result
+    }
         
         
         
