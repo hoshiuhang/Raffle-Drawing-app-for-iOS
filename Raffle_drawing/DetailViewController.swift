@@ -140,7 +140,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             if selectedRaffleStates == 0
             {
             print("go to edit Raffle")
-             guard let editingRaffleScreen = segue.destination as? raffleEditingViewController2 else
+             guard let editingRaffleScreen = segue.destination as? raffleEditingViewController else
             {
                 fatalError("unexpected destination: \(segue.destination)")
             }
