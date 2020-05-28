@@ -131,57 +131,89 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "goToRaffleEditingSegue"
-        {
-            let raffleName = raffle?.ID
+            {
+                let raffleName = raffle?.ID
+                let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+                let selectedRaffle = database.selectRaffleBy(id: raffleName!)
+                let selectedRaffleStates = selectedRaffle?.status
+                print("this is rafflestatus \(String(describing: selectedRaffleStates))")
+                if selectedRaffleStates == 0
+                {
+                print("go to edit Raffle")
+                 guard let editingRaffleScreen = segue.destination as? raffleEditingViewController else
+                {
+                    fatalError("unexpected destination: \(segue.destination)")
+                }
+                editingRaffleScreen.raffle = selectedRaffle
+                }
+                else
+                {
+                    let alert = UIAlertController(title: "ALert", message: "This raffle has started, detail cannot be change", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The \"OK\" alert occured.")
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+
+            }
+        //send raffle detail to sellticket view
+        if segue.identifier == "sellTicketSegue"
+           {         print("go to sell ticket")
+               
+            let raffleName = raffle!.ID//get current raffle id
             let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
-            let selectedRaffle = database.selectRaffleBy(id: raffleName!)
-            let selectedRaffleStates = selectedRaffle?.status
-            print("this is rafflestatus \(String(describing: selectedRaffleStates))")
-            if selectedRaffleStates == 0
+            let currentRaffle = database.selectRaffleBy(id: raffleName)
+            let raffleStatus:Int32 = currentRaffle!.status
+            if raffleStatus == 3
             {
-            print("go to edit Raffle")
-             guard let editingRaffleScreen = segue.destination as? raffleEditingViewController else
-            {
-                fatalError("unexpected destination: \(segue.destination)")
-            }
-            editingRaffleScreen.raffle = selectedRaffle
-            }
-            else
-            {
-                let alert = UIAlertController(title: "ALert", message: "This raffle has started, detail cannot be change", preferredStyle: .alert)
+                let alert = UIAlertController(title: "ALert", message: "Drew Raffle cannot sell ticket !!", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                 NSLog("The \"OK\" alert occured.")
                 }))
                 self.present(alert, animated: true, completion: nil)
             }
-
-        }
-        //send raffle detail to sellticket view
-        if segue.identifier == "sellTicketSegue"
-       {         print("go to sell ticket")
-           
-        let raffleName = raffle!.ID//get current raffle id
-               let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
-               let currentRaffle = database.selectRaffleBy(id: raffleName)
-               let raffleStatus:Int32 = currentRaffle!.status
-        if raffleStatus == 3
-        {
-            let alert = UIAlertController(title: "ALert", message: "Drew Raffle cannot sell ticket !!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
-        else{
-         guard let sellTicketScreen = segue.destination as? sellTicketViewController else
-         {
-             fatalError("unexpected destination: \(segue.destination)")
-         }
+            else{
+             guard let sellTicketScreen = segue.destination as? sellTicketViewController else
+             {
+                 fatalError("unexpected destination: \(segue.destination)")
+             }
+            
+             let selectedRaffle = raffle
+             sellTicketScreen.raffle = selectedRaffle
+             }
+            }
         
-         let selectedRaffle = raffle
-         sellTicketScreen.raffle = selectedRaffle
-         }
-        }
+            if segue.identifier == "winnerSegue"
+            {
+                let raffleName = raffle?.ID
+                let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+                let selectedRaffle = database.selectRaffleBy(id: raffleName!)
+                let selectedRaffleStates = selectedRaffle?.status
+                print("this is rafflestatus \(String(describing: selectedRaffleStates))")
+                if selectedRaffleStates == 3
+                {
+                    print("go to winner list")
+                     guard let winnerScreen = segue.destination as? WinnerTableViewController else
+                        {
+                            fatalError("unexpected destination: \(segue.destination)")
+                        }
+                    winnerScreen.raffle = selectedRaffle
+                }
+                else
+                {
+                    let alert = UIAlertController(title: "ALert", message: "This raffle has started, detail cannot be change", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The \"OK\" alert occured.")
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+
+            }
+        
+        
+        
+        
+        
        }
     
     //catch unwind segue
