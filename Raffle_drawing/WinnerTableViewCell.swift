@@ -1,5 +1,5 @@
 //
-//  WinnerTableViewCell.swift
+//  winnerTableViewCell.swift
 //  Raffle_drawing
 //
 //  Created by Sunny on 28/5/20.
@@ -8,8 +8,27 @@
 
 import UIKit
 
-class WinnerTableViewCell: UITableViewCell {
+class winnerTableViewCell: UITableViewCell {
 
+    
+    
+
+    
+    @IBOutlet weak var ticketIDLabel: UILabel!
+    @IBOutlet weak var playerNameLabel: UILabel!
+    
+    
+    @IBOutlet weak var playerEmailLabel: UILabel!
+    
+    
+    @IBOutlet weak var playerContactLabel: UILabel!
+    
+    
+    @IBOutlet weak var ticketPriceLabel: UILabel!
+    
+    
+    @IBOutlet weak var dateTimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
