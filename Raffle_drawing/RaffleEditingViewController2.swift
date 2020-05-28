@@ -102,6 +102,21 @@ class raffleEditingViewController2: UIViewController {
         
     }
     
+    func confirmUpdate()
+    {
+        if var displayRaffle = raffle
+        {
+            displayRaffle.title = String(titleField.text ?? "Not Provided")
+            displayRaffle.description = String(descriptionField.text ?? "Not Provided")
+            displayRaffle.price = Int32(String(priceLabel.text!)) ?? 1
+            displayRaffle.max_ticket = Int32(String(maxTicketLabel.text!)) ?? 100
+            displayRaffle.prize = String(prizeField.text ?? "Not Provided")
+            displayRaffle.winnerNo = Int32(String(winnerLabel.text!)) ?? 1
+            
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+            database.editingRaffleDetailBy(raffle: displayRaffle)
+        }
+    }
 
     /*
     // MARK: - Navigation
