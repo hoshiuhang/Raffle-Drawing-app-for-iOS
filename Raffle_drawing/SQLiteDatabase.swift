@@ -471,7 +471,7 @@ class SQLiteDatabase
             sqlite3_bind_int(insertStatement, 8, Int32(raffle.winnerNo))
         })
         
-        
+//        use last table id to create related ticket table
         let newRaffleID = sqlite3_last_insert_rowid(db)
         //create related ticket table for the same raffle
         let createTicketTableQuery =
