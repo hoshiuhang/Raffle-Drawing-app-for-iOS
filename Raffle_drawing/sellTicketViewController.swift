@@ -41,12 +41,21 @@ var raffle: Raffle?//collect Raffle related detail
     
     
     @IBAction func totalPriceBtn(_ sender: UIButton) {
-        let currentinput = String(userMobileField.text ?? "0")
-        let test = currentinput.isValidPhone
-        print(test)
+        let currentContact = String(userMobileField.text ?? "0")
+        let contactTest = currentContact.isValidPhone
+        print(contactTest)
+        if contactTest == true || currentContact == "0"
+        {
         calculateTotal()
-        
-        
+        }
+        else
+        {
+            let alert = UIAlertController(title: "Input error", message: "Please enter 10 digit Australia phone number", preferredStyle: .alert)
+
+                   alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: { _ in
+                       NSLog("The \"cancel\" alert occured.")}))
+                   self.present(alert, animated: true, completion: nil)
+        }
     }
     
     
@@ -146,21 +155,7 @@ var raffle: Raffle?//collect Raffle related detail
         }
         
     }
-//    extension String{
-//        var playerContactTest: Bool{
-//            do {
-//                let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
-//                let matches = detector.matches(in: self, options: [], range: NSMakeRange(0,self.count))
-//                if let result = matches.first{
-//                    return result.resultType == .phoneNumber && result.range.location == 0 && result.range.length == self.count && self.count == 10
-//                } else{
-//                    return false
-//                }
-//            }
-//        }
-//
-//
-//    }
+
     
    
     /*

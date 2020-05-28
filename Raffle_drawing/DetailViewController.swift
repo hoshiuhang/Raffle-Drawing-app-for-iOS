@@ -89,6 +89,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             rIDLabel.text = String(displayRaffle.ID)
             
         }
+       
+
         
  
         
@@ -123,6 +125,15 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
 
           return cell
       }
+    override func viewWillAppear(_ animated: Bool)
+           {
+            let currentRaffleID = raffle?.ID
+            let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+            let updatedRaffle = database.selectRaffleBy(id: currentRaffleID!)
+            rTitleLabel.text = String(updatedRaffle!.title)
+            rPriceLabel.text = String(updatedRaffle!.price)
+            rIDLabel.text = String(updatedRaffle!.ID)
+           }
           
     
     
@@ -201,7 +212,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                 }
                 else
                 {
-                    let alert = UIAlertController(title: "ALert", message: "This raffle has started, detail cannot be change", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "ALert", message: "This raffle has not draw yet, no winner detail", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                     NSLog("The \"OK\" alert occured.")
                     }))
