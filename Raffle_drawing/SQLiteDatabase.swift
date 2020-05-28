@@ -26,7 +26,7 @@ class SQLiteDatabase
      
         WARNING: DOING THIS WILL WIPE YOUR DATA, unless you modify how updateDatabase() works.
      */
-    private let DATABASE_VERSION = 34
+    private let DATABASE_VERSION = 35
     
     
     
@@ -483,7 +483,8 @@ class SQLiteDatabase
                 playerName String,
                 playerEmail String,
                 playerContact INTEGER,
-                dateTime String
+                dateTime String,
+                status INTEGER
             );
         """
         createTableWithQuery(createTicketTableQuery, tableName:"\(newRaffleID)")
@@ -547,8 +548,16 @@ class SQLiteDatabase
            })
            
     }
-    
-    
+//    update raffle status after drawing
+    func raffleDrewBy(id:Int32,status:Int32)
+    {
+        let updateStatementQuery = "UPDATE raffle SET status= ? , ticketSold=?, max_ticket=? WHERE ID = \(id) "
+        updateWithQuery(updateStatementQuery, bindingFunction:{(updateStatment) in
+            //upate Raffle status
+            sqlite3_bind_int(updateStatment,1, Int32(status))
+           })
+           
+    }
     
     // Query 1 movie
     func selectRaffleBy(id:Int32) -> Raffle?
@@ -574,6 +583,8 @@ class SQLiteDatabase
            })
            return result
     }
+    
+    
     
     //create player table function
     func createPlayerTable()
@@ -643,14 +654,14 @@ class SQLiteDatabase
 //               })
 //               return result
 //        }
-//
+
     
 // Mark:- Ticket related section
 
     func selectAllTicket(tableName:Int32) -> [Ticket]
     {
         var result = [Ticket]()
-        let selectStatementQuery = "SELECT ID,price,playerName,playerEmail,playerContact,dateTime From table\(tableName)"
+        let selectStatementQuery = "SELECT ID,price,playerName,playerEmail,playerContact,dateTime,status From table\(tableName)"
     
        selectWithQuery(selectStatementQuery, eachRow: { (row) in //create a movie object from each result
         let ticket = Ticket(
@@ -659,8 +670,9 @@ class SQLiteDatabase
         playerName: String(cString:sqlite3_column_text(row, 2)),
         playerEmail: String(cString:sqlite3_column_text(row, 3)),
         playerContact: sqlite3_column_int(row, 4),
-        dateTime: String(cString:sqlite3_column_text(row, 5))
-        )
+        dateTime: String(cString:sqlite3_column_text(row, 5)),
+        status: sqlite3_column_int(row, 6))
+        
         //add it to the result array
         result += [ticket]
         })
@@ -670,7 +682,7 @@ class SQLiteDatabase
     func insertTicket (raffleTitle:Int32, ticket: Ticket)
         {
             let insertStatementQuery =
-                "INSERT INTO table\(raffleTitle) (price,playerName,playerEmail,playerContact, dateTime) VALUES (?, ?, ?,?,?);"
+                "INSERT INTO table\(raffleTitle) (price,playerName,playerEmail,playerContact, dateTime,status) VALUES (?, ?, ?, ?, ?, ?);"
             
             insertWithQuery(insertStatementQuery, bindingFunction: { (insertStatement) in
                 sqlite3_bind_int(insertStatement, 1, ticket.tPrice)
@@ -678,6 +690,7 @@ class SQLiteDatabase
                 sqlite3_bind_text(insertStatement, 3, NSString(string:ticket.playerEmail).utf8String, -1, nil)
                 sqlite3_bind_int(insertStatement, 4, ticket.playerContact)
                 sqlite3_bind_text(insertStatement, 5, NSString(string:ticket.dateTime).utf8String, -1, nil)
+                sqlite3_bind_int(insertStatement, 6, ticket.status)
             })
         }
     
@@ -695,7 +708,8 @@ class SQLiteDatabase
                    playerName: String(cString:sqlite3_column_text(row, 2)),
                    playerEmail: String(cString:sqlite3_column_text(row, 3)),
                    playerContact: sqlite3_column_int(row, 4),
-                   dateTime: String(cString:sqlite3_column_text(row, 5))
+                   dateTime: String(cString:sqlite3_column_text(row, 5)),
+                   status: sqlite3_column_int(row, 6)
                )
                //add it to the result array
                result = ticket
@@ -703,7 +717,15 @@ class SQLiteDatabase
                return result
         }
     
-        
+    func winningTicketBy(tableName:Int32,id:Int32,status:Int32)
+        {
+            let updateStatementQuery = "UPDATE table\(tableName) SET status= ?  WHERE ID = \(id) "
+            updateWithQuery(updateStatementQuery, bindingFunction:{(updateStatment) in
+                //upate Raffle status
+                sqlite3_bind_int(updateStatment,1, Int32(status))
+               })
+               
+        }
         
         
         

@@ -127,7 +127,7 @@ var raffle: Raffle?//collect Raffle related detail
         while i<totalTicketSold
         {
         
-            database.insertTicket(raffleTitle:raffle_id,ticket:Ticket(tPrice:Int32(ticketPrice),playerName:playerName,playerEmail:playerEmail,playerContact:playerContact,dateTime:purchaseTime))
+            database.insertTicket(raffleTitle:raffle_id,ticket:Ticket(tPrice:Int32(ticketPrice),playerName:playerName,playerEmail:playerEmail,playerContact:playerContact,dateTime:purchaseTime,status:0))
            ticketSold+=1
             max_ticket-=1
         database.updateRaffleBy(id: raffle_id, status: 1,ticketSold:ticketSold,max_ticket:max_ticket)

@@ -14,6 +14,7 @@ public struct Ticket
     var playerEmail:String
     var playerContact:Int32
     var dateTime:String //ticket table
+    var status:Int32 //0 = not win, 1 = win
     
    
 }
