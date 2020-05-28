@@ -29,6 +29,11 @@ var raffle: Raffle?//collect Raffle related detail
     
     @IBOutlet weak var userMobileField: UITextField!
     
+   
+    
+    
+    
+    
     
     //selling ticket control
     @IBOutlet weak var stepper: UIStepper!
@@ -36,7 +41,12 @@ var raffle: Raffle?//collect Raffle related detail
     
     
     @IBAction func totalPriceBtn(_ sender: UIButton) {
-            calculateTotal()
+        let currentinput = String(userMobileField.text ?? "0")
+        let test = currentinput.isValidPhone
+        print(test)
+        calculateTotal()
+        
+        
     }
     
     
@@ -136,6 +146,22 @@ var raffle: Raffle?//collect Raffle related detail
         }
         
     }
+//    extension String{
+//        var playerContactTest: Bool{
+//            do {
+//                let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
+//                let matches = detector.matches(in: self, options: [], range: NSMakeRange(0,self.count))
+//                if let result = matches.first{
+//                    return result.resultType == .phoneNumber && result.range.location == 0 && result.range.length == self.count && self.count == 10
+//                } else{
+//                    return false
+//                }
+//            }
+//        }
+//
+//
+//    }
+    
    
     /*
     // MARK: - Navigation
