@@ -551,7 +551,7 @@ class SQLiteDatabase
 //    update raffle status after drawing
     func raffleDrewBy(id:Int32,status:Int32)
     {
-        let updateStatementQuery = "UPDATE raffle SET status= ? , ticketSold=?, max_ticket=? WHERE ID = \(id) "
+        let updateStatementQuery = "UPDATE raffle SET status= ? WHERE ID = \(id) "
         updateWithQuery(updateStatementQuery, bindingFunction:{(updateStatment) in
             //upate Raffle status
             sqlite3_bind_int(updateStatment,1, Int32(status))

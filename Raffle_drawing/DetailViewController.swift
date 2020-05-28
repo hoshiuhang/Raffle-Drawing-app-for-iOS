@@ -44,6 +44,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         {
         drawingRaffle()
         }
+        else
+        {
+        let alert = UIAlertController(title: "Alert", message: "Cannot draw if Raffle has drew or less ticket sold than number of winner(s) ", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+        }
         
     }
     
@@ -152,6 +160,19 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         if segue.identifier == "sellTicketSegue"
        {         print("go to sell ticket")
            
+        let raffleName = raffle!.ID//get current raffle id
+               let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+               let currentRaffle = database.selectRaffleBy(id: raffleName)
+               let raffleStatus:Int32 = currentRaffle!.status
+        if raffleStatus == 3
+        {
+            let alert = UIAlertController(title: "ALert", message: "Drew Raffle cannot sell ticket !!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
          guard let sellTicketScreen = segue.destination as? sellTicketViewController else
          {
              fatalError("unexpected destination: \(segue.destination)")
@@ -160,6 +181,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
          let selectedRaffle = raffle
          sellTicketScreen.raffle = selectedRaffle
          }
+        }
        }
     
     //catch unwind segue
@@ -220,9 +242,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         for id in drawNo
         {
             database.winningTicketBy(tableName:raffleName,id:id,status:1)
-            database.raffleDrewBy(id:raffleName,status:3)
+            
         }
-        
+        database.raffleDrewBy(id:raffleName,status:3)
         let alert = UIAlertController(title: "Congratulation ", message: " Winner(s) being draw, You can check it in Winner section", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
         NSLog("The \"OK\" alert occured.")

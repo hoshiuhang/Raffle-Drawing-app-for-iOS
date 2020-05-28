@@ -443,6 +443,7 @@
                                     <constraint firstAttribute="width" constant="151" id="3Z2-la-Dg6"/>
                                     <constraint firstAttribute="height" constant="30" id="h9k-kS-DQ9"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Winner" image="person.3.fill" catalog="system"/>
                             </button>

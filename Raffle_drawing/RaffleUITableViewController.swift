@@ -107,7 +107,7 @@ var raffles = [Raffle]()
             
 //            test if the raffle has been activate
             print("the raffle status\(status)")
-            if selectedRaffle.status == 1
+            if selectedRaffle.status == 1 //activate Raffle cannot be delete
             {
                 let alert = UIAlertController(title: "Error", message: "This Raffle has started, it cannot be delete", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
