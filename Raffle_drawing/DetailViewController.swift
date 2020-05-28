@@ -196,7 +196,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                print("table reload")
         
     }
+    @IBAction func finishEditingSegue(segue: UIStoryboardSegue) {
+        
+        
+    }
     
+    
+    
+//    Raffle drawing function
     func drawingRaffle()
     {
         

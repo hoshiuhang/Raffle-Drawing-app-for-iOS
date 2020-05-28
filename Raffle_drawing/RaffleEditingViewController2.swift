@@ -28,14 +28,18 @@ class raffleEditingViewController2: UIViewController {
             
             let currentPrice:Int32 = newRaffle!.price
             priceLabel.text = String(currentPrice)
+            priceStepperOutlet.value = Double(currentPrice)
             
             let currentMax:Int32 = newRaffle!.max_ticket
             maxTicketLabel.text = String(currentMax)
+            maxTicketOutlet.value = Float(currentMax)
+            
             
             prizeField.text = newRaffle?.prize
             
             let currentWinnerNo:Int32 = newRaffle!.winnerNo
             winnerLabel.text = String(currentWinnerNo)
+            winnerStepperOutlet.value = Double(currentWinnerNo)
         
             
            print("this is \(String(describing: newRaffle?.title))")
@@ -46,16 +50,18 @@ class raffleEditingViewController2: UIViewController {
         
         
         
-    priceStepperOutlet.wraps = true
-    priceStepperOutlet.autorepeat = true
-    priceStepperOutlet.minimumValue = 1
-    priceStepperOutlet.maximumValue = 100
+            priceStepperOutlet.wraps = true
+            priceStepperOutlet.autorepeat = true
+            priceStepperOutlet.stepValue = 1
+            priceStepperOutlet.minimumValue = 1
+            priceStepperOutlet.maximumValue = 100
 
     
-    winnerStepperOutlet.wraps = true
-    winnerStepperOutlet.autorepeat = true
-    winnerStepperOutlet.minimumValue = 1
-    winnerStepperOutlet.maximumValue = 100
+            winnerStepperOutlet.wraps = true
+            winnerStepperOutlet.autorepeat = true
+            winnerStepperOutlet.stepValue = 1
+            winnerStepperOutlet.minimumValue = 1
+            winnerStepperOutlet.maximumValue = 100
     }
     
     
@@ -68,7 +74,10 @@ class raffleEditingViewController2: UIViewController {
     @IBOutlet weak var priceStepperOutlet: UIStepper!
     
     @IBAction func priceStepperControl(_ sender: UIStepper) {
+        
         priceLabel.text = Int32(sender.value).description
+        
+        print("this is the current stepper value \(priceStepperOutlet.value)")
     }
     
     
@@ -85,6 +94,7 @@ class raffleEditingViewController2: UIViewController {
         maxTicketLabel.text = "\(currentValue)"
     }
     
+    
     @IBOutlet weak var descriptionField: UITextField!
   
     @IBOutlet weak var prizeField: UITextField!
@@ -98,8 +108,8 @@ class raffleEditingViewController2: UIViewController {
         winnerLabel.text = Int32(sender.value).description
     }
     @IBAction func updateBtn(_ sender: UIButton) {
-        
-        
+        confirmUpdate()
+        self.performSegue(withIdentifier: "finishEditingSegue", sender: self)
     }
     
     func confirmUpdate()
@@ -116,6 +126,7 @@ class raffleEditingViewController2: UIViewController {
         let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
             database.editingRaffleDetailBy(raffle: displayRaffle)
         }
+        
     }
 
     /*
