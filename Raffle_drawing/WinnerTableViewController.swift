@@ -9,15 +9,16 @@
 import UIKit
 
 class WinnerTableViewController: UITableViewController {
-
+var tickets = [Ticket]()
+var raffle: Raffle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let raffleID = raffle?.ID
+        
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        tickets = database.selectWonTicket(tableName: raffleID!)
+        
     }
 
     // MARK: - Table view data source
@@ -29,18 +30,27 @@ class WinnerTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tickets.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+       {
+           let cell = tableView.dequeueReusableCell(withIdentifier: "winnerTableViewCell", for: indexPath)
 
-        // Configure the cell...
+           // Configure the cell...
+           let ticket = tickets[indexPath.row]
+           if let ticketCell = cell as? winnerTableViewCell
+           {
+            ticketCell.ticketIDLabel.text = String(ticket.ticketID)
+            ticketCell.playerNameLabel.text = ticket.playerName
+            ticketCell.playerEmailLabel.text = ticket.playerEmail
+            ticketCell.playerContactLabel.text = String(ticket.playerContact)
+            ticketCell.ticketPriceLabel.text = String(ticket.tPrice)
+            ticketCell.dateTimeLabel.text = ticket.dateTime
+           }
 
-        return cell
-    }
-    */
+           return cell
+       }
 
     /*
     // Override to support conditional editing of the table view.
