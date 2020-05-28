@@ -18,17 +18,18 @@ class winnersTableViewCell: UITableViewCell {
     @IBOutlet weak var playerNameLabel: UILabel!
     
     
+
     @IBOutlet weak var playerEmailLabel: UILabel!
     
     
     @IBOutlet weak var playerContactLabel: UILabel!
     
     
+    
     @IBOutlet weak var ticketPriceLabel: UILabel!
     
     
     @IBOutlet weak var dateTimeLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -35,11 +35,11 @@ var raffle: Raffle?
 
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
        {
-           let cell = tableView.dequeueReusableCell(withIdentifier: "winnerTableViewCell", for: indexPath)
+           let cell = tableView.dequeueReusableCell(withIdentifier: "winnersTableViewCell", for: indexPath)
 
            // Configure the cell...
            let ticket = tickets[indexPath.row]
-           if let ticketCell = cell as? winnerTableViewCell
+           if let ticketCell = cell as? winnersTableViewCell
            {
             ticketCell.ticketIDLabel.text = String(ticket.ticketID)
             ticketCell.playerNameLabel.text = ticket.playerName

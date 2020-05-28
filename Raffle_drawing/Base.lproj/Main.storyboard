@@ -457,7 +457,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Winner" image="person.3.fill" catalog="system"/>
                                 <connections>
-                                    <segue destination="O3f-XN-iVm" kind="show" identifier="winnerSegue" id="YAX-X2-kUe"/>
+                                    <segue destination="O3f-XN-iVm" kind="show" identifier="winnerSegue" id="tjS-Pv-xEZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1168,7 +1168,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="winnerTableViewCell" rowHeight="160" id="wSj-KF-7rh" customClass="winnerTableViewCell" customModule="Raffle_drawing" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="winnersTableViewCell" rowHeight="160" id="wSj-KF-7rh" customClass="winnersTableViewCell" customModule="Raffle_drawing" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wSj-KF-7rh" id="NQD-nU-lDW" customClass="UITableViewCellContentView">
@@ -1282,12 +1282,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="dateTimeLabel" destination="JPc-91-HYU" id="JXS-xX-3aS"/>
-                                    <outlet property="playerContactLabel" destination="SOl-N2-xQ2" id="1Fx-Me-6xw"/>
-                                    <outlet property="playerEmailLabel" destination="uss-MD-nom" id="WzZ-HD-K7c"/>
-                                    <outlet property="playerNameLabel" destination="uFn-cn-TyS" id="HES-KQ-QDc"/>
-                                    <outlet property="ticketIDLabel" destination="TNg-mi-noS" id="Gro-Au-Hp4"/>
-                                    <outlet property="ticketPriceLabel" destination="7jL-5H-D0j" id="gyz-Lq-keF"/>
+                                    <outlet property="dateTimeLabel" destination="JPc-91-HYU" id="viJ-94-Qa4"/>
+                                    <outlet property="playerContactLabel" destination="SOl-N2-xQ2" id="JfZ-M0-p7K"/>
+                                    <outlet property="playerEmailLabel" destination="uss-MD-nom" id="JMy-Ac-Oux"/>
+                                    <outlet property="playerNameLabel" destination="uFn-cn-TyS" id="dxk-Hq-vXf"/>
+                                    <outlet property="ticketIDLabel" destination="TNg-mi-noS" id="Ttl-IV-W5p"/>
+                                    <outlet property="ticketPriceLabel" destination="7jL-5H-D0j" id="W0F-3k-JfA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
