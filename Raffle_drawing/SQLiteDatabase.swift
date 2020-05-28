@@ -210,7 +210,7 @@ class SQLiteDatabase
     func deleteAllTicketTable()
     {
         var ID = 0
-        let i=20
+        let i = 20
         while i > ID {
         //prepare the statement
         let query = "DROP TABLE IF EXISTS 'table\(ID)'"
@@ -247,7 +247,7 @@ class SQLiteDatabase
             */
            
            //prepare the statement
-           let query = "DELETE FROM raffle WHERE ID=\(ID)"
+           var query = "DELETE FROM raffle WHERE ID=\(ID)"
            var statement: OpaquePointer? = nil
 
            if sqlite3_prepare_v2(db, query, -1, &statement, nil)     == SQLITE_OK
@@ -265,6 +265,28 @@ class SQLiteDatabase
            
            //clear up
            sqlite3_finalize(statement)
+//        delete related ticket table
+            query = "DROP TABLE IF EXISTS 'table\(ID)'"
+            statement = nil
+
+            if sqlite3_prepare_v2(db, query, -1, &statement, nil)     == SQLITE_OK
+            {
+                //run the query
+                if sqlite3_step(statement) == SQLITE_DONE {
+                    print("ticket table\(ID) related to raffle \(ID)  Delete.")
+                }
+            }
+            else
+            {
+                print("ticket table\(ID) ralated to Raffle \(ID)could not be deleted.")
+                printCurrentSQLErrorMessage(db)
+            }
+            
+            //clear up
+            sqlite3_finalize(statement)
+        
+        
+        
        }
     
 

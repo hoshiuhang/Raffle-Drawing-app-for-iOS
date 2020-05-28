@@ -111,9 +111,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     {
         if segue.identifier == "goToRaffleEditingSegue"
         {
-            let selectedRaffle = raffle
-            let selectedRaffleStatus = raffle?.status
-            if selectedRaffleStatus == 0
+            let raffleName = raffle?.ID
+            let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+            let selectedRaffle = database.selectRaffleBy(id: raffleName!)
+            let selectedRaffleStates = selectedRaffle?.status
+            print("this is rafflestatus \(String(describing: selectedRaffleStates))")
+            if selectedRaffleStates == 0
             {
             print("go to edit Raffle")
              guard let editingRaffleScreen = segue.destination as? raffleEditingViewController2 else

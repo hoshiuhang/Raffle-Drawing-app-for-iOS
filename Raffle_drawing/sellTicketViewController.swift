@@ -133,6 +133,7 @@ var raffle: Raffle?//collect Raffle related detail
         database.updateRaffleBy(id: raffle_id, status: 1,ticketSold:ticketSold,max_ticket:max_ticket)
             totalTicketSold-=1
         }
+        
     }
    
     /*
