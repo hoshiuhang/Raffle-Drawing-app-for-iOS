@@ -16,7 +16,8 @@ extension String {
       return testEmail.evaluate(with: self)
    }
    var isValidPhone: Bool {
-      let regularExpressionForPhone = "^\\d{3}-\\d{3}-\\d{4}$"
+//      let regularExpressionForPhone = "^\\d{3}-\\d{3}-\\d{4}$"
+    let regularExpressionForPhone = "^\\d{10}$"
       let testPhone = NSPredicate(format:"SELF MATCHES %@", regularExpressionForPhone)
       return testPhone.evaluate(with: self)
    }
