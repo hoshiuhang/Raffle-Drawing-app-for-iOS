@@ -517,11 +517,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fux-Vg-uPl">
-                                <rect key="frame" x="51" y="214.66666666666666" width="19" height="17.666666666666657"/>
+                                <rect key="frame" x="51" y="214.66666666666669" width="19" height="17.666666666666657"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U0X-OR-hUB">
                                 <rect key="frame" x="78" y="206" width="146" height="34"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="146" id="GgI-tL-g4X"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" textContentType="name"/>
                             </textField>
@@ -542,7 +545,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="264" id="fbG-yc-iJP"/>
                                 </constraints>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                             </textField>
@@ -563,8 +566,8 @@
                                     <action selector="searchUserBtn:" destination="ZGh-CS-IXd" eventType="touchUpInside" id="WeE-8q-SlJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="optional" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KZ-1w-jUT">
-                                <rect key="frame" x="85" y="357" width="43" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="optional" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KZ-1w-jUT">
+                                <rect key="frame" x="84" y="357" width="43" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -574,7 +577,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="PBr-sx-484"/>
                                 </constraints>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
@@ -611,9 +614,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2I-as-MXS">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2I-as-MXS">
                                 <rect key="frame" x="78" y="718" width="265" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Confirm purchase"/>
@@ -627,6 +629,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Ticket available:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8p-Wz-JRu">
+                                <rect key="frame" x="29" y="620" width="185" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8j-7c-E0G">
+                                <rect key="frame" x="222" y="620" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -637,6 +651,8 @@
                             <constraint firstItem="41H-DO-v0P" firstAttribute="leading" secondItem="Sdn-XD-6Jj" secondAttribute="leading" constant="50" id="6ii-B4-1BO"/>
                             <constraint firstItem="wrr-t8-pUR" firstAttribute="top" secondItem="do1-Cd-7jw" secondAttribute="bottom" constant="31" id="8VY-C7-Ojv"/>
                             <constraint firstItem="60G-9c-kWs" firstAttribute="centerY" secondItem="2lO-gw-RfW" secondAttribute="centerY" id="9m6-ae-wBZ"/>
+                            <constraint firstItem="v2I-as-MXS" firstAttribute="top" secondItem="c8p-Wz-JRu" secondAttribute="bottom" constant="77" id="9oG-q7-PDN"/>
+                            <constraint firstItem="Sdn-XD-6Jj" firstAttribute="trailing" secondItem="v2I-as-MXS" secondAttribute="trailing" constant="71" id="AQU-st-Vxw"/>
                             <constraint firstItem="do1-Cd-7jw" firstAttribute="top" secondItem="zJy-PQ-agf" secondAttribute="bottom" constant="18" id="AVL-aK-Vmm"/>
                             <constraint firstItem="zJy-PQ-agf" firstAttribute="top" secondItem="6sY-cp-naa" secondAttribute="bottom" constant="60.329999999999998" id="Aa5-RX-JvA"/>
                             <constraint firstItem="Sdn-XD-6Jj" firstAttribute="bottom" secondItem="2lO-gw-RfW" secondAttribute="bottom" constant="201" id="BmZ-w5-hx4"/>
@@ -644,6 +660,7 @@
                             <constraint firstItem="7a0-5k-VV7" firstAttribute="top" secondItem="nbK-Vn-Aat" secondAttribute="bottom" constant="4.6699999999999999" id="DO4-0y-Yuc"/>
                             <constraint firstItem="nbK-Vn-Aat" firstAttribute="leading" secondItem="66h-sb-0R1" secondAttribute="trailing" constant="6" id="DYW-OY-Hqo"/>
                             <constraint firstItem="nbK-Vn-Aat" firstAttribute="top" secondItem="U0X-OR-hUB" secondAttribute="bottom" constant="20.670000000000002" id="GSe-rC-bT6"/>
+                            <constraint firstItem="Sdn-XD-6Jj" firstAttribute="bottom" secondItem="v2I-as-MXS" secondAttribute="bottom" constant="65" id="Gbg-ex-ijb"/>
                             <constraint firstItem="fux-Vg-uPl" firstAttribute="top" secondItem="LW0-qJ-En1" secondAttribute="bottom" constant="46" id="HdC-VX-h9C"/>
                             <constraint firstItem="60G-9c-kWs" firstAttribute="leading" secondItem="wCB-B9-vDg" secondAttribute="trailing" constant="4" id="QBn-tA-nY4"/>
                             <constraint firstItem="0KZ-1w-jUT" firstAttribute="top" secondItem="6sY-cp-naa" secondAttribute="bottom" constant="1.3300000000000001" id="RiI-18-hT2"/>
@@ -653,6 +670,7 @@
                             <constraint firstItem="Sdn-XD-6Jj" firstAttribute="trailing" secondItem="a83-wX-Zc5" secondAttribute="trailing" constant="72" id="XeX-6b-Sy9"/>
                             <constraint firstItem="do1-Cd-7jw" firstAttribute="trailing" secondItem="zJy-PQ-agf" secondAttribute="trailing" id="a7X-yr-gle"/>
                             <constraint firstItem="U0X-OR-hUB" firstAttribute="centerY" secondItem="fux-Vg-uPl" secondAttribute="centerY" id="d4h-BK-BKR"/>
+                            <constraint firstItem="v2I-as-MXS" firstAttribute="leading" secondItem="Sdn-XD-6Jj" secondAttribute="leading" constant="78" id="dM7-Yz-wHl"/>
                             <constraint firstItem="zJy-PQ-agf" firstAttribute="leading" secondItem="Sdn-XD-6Jj" secondAttribute="leading" constant="143" id="fcs-3r-a4k"/>
                             <constraint firstItem="7a0-5k-VV7" firstAttribute="leading" secondItem="Sdn-XD-6Jj" secondAttribute="leading" constant="85" id="flz-lH-eRK"/>
                             <constraint firstItem="nbK-Vn-Aat" firstAttribute="centerY" secondItem="66h-sb-0R1" secondAttribute="centerY" id="gAt-XP-dWy"/>
@@ -663,6 +681,8 @@
                             <constraint firstItem="6sY-cp-naa" firstAttribute="top" secondItem="7a0-5k-VV7" secondAttribute="bottom" constant="8" id="hvT-pl-9nE"/>
                             <constraint firstItem="wrr-t8-pUR" firstAttribute="leading" secondItem="Sdn-XD-6Jj" secondAttribute="leading" constant="162" id="iHC-im-18c"/>
                             <constraint firstItem="a83-wX-Zc5" firstAttribute="leading" secondItem="U0X-OR-hUB" secondAttribute="trailing" constant="26" id="oNF-eP-Vi1"/>
+                            <constraint firstItem="G8j-7c-E0G" firstAttribute="centerY" secondItem="c8p-Wz-JRu" secondAttribute="centerY" id="qkL-lR-1yQ"/>
+                            <constraint firstItem="c8p-Wz-JRu" firstAttribute="leading" secondItem="2lO-gw-RfW" secondAttribute="leading" id="rBS-wg-BPc"/>
                             <constraint firstItem="Sdn-XD-6Jj" firstAttribute="trailing" secondItem="LW0-qJ-En1" secondAttribute="trailing" constant="62" id="uFd-KC-vk3"/>
                             <constraint firstItem="2lO-gw-RfW" firstAttribute="leading" secondItem="Sdn-XD-6Jj" secondAttribute="leading" constant="29" id="yUf-Iv-Va6"/>
                             <constraint firstItem="a83-wX-Zc5" firstAttribute="top" secondItem="LW0-qJ-En1" secondAttribute="bottom" constant="46" id="yXa-8l-bzJ"/>
@@ -673,6 +693,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="GnB-1Q-4aZ"/>
                     <connections>
+                        <outlet property="max_ticketLabel" destination="G8j-7c-E0G" id="ZSo-ME-YYL"/>
                         <outlet property="no_of_ticketLabel" destination="do1-Cd-7jw" id="2zj-Uz-fS0"/>
                         <outlet property="playerNameField" destination="U0X-OR-hUB" id="8kb-Re-p0R"/>
                         <outlet property="singleTicketPriceLabel" destination="wCB-B9-vDg" id="mAh-B3-L1T"/>

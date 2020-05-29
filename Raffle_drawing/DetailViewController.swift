@@ -146,25 +146,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                 let raffleName = raffle?.ID
                 let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
                 let selectedRaffle = database.selectRaffleBy(id: raffleName!)
-                let selectedRaffleStates = selectedRaffle?.status
-                print("this is rafflestatus \(String(describing: selectedRaffleStates))")
-                if selectedRaffleStates == 0
-                {
+               
                 print("go to edit Raffle")
                  guard let editingRaffleScreen = segue.destination as? raffleEditingViewController else
                 {
                     fatalError("unexpected destination: \(segue.destination)")
                 }
                 editingRaffleScreen.raffle = selectedRaffle
-                }
-                else
-                {
-                    let alert = UIAlertController(title: "ALert", message: "This raffle has started, detail cannot be change", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                    NSLog("The \"OK\" alert occured.")
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }
+                
 
             }
         //send raffle detail to sellticket view

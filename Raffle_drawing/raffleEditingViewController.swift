@@ -107,9 +107,29 @@ class raffleEditingViewController: UIViewController {
     @IBAction func winnerStepperControl(_ sender: UIStepper) {
         winnerLabel.text = Int32(sender.value).description
     }
+//    confrim btn
+    
     @IBAction func updateBtn(_ sender: UIButton) {
+        let raffleName = raffle?.ID
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+      let selectedRaffle = database.selectRaffleBy(id: raffleName!)
+      let selectedRaffleStates = selectedRaffle?.status
+      print("this is rafflestatus \(String(describing: selectedRaffleStates))")
+      if selectedRaffleStates == 0
+      {
         confirmUpdate()
         self.performSegue(withIdentifier: "finishEditingSegue", sender: self)
+    
+      }
+        else
+      {
+        let alert = UIAlertController(title: "ALert", message: "This raffle has started/drew, detail cannot be change", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+        NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     func confirmUpdate()

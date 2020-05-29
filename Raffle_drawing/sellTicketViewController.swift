@@ -31,6 +31,7 @@ var raffle: Raffle?//collect Raffle related detail
     
    
     
+    @IBOutlet weak var max_ticketLabel: UILabel!
     
     
     
@@ -40,21 +41,16 @@ var raffle: Raffle?//collect Raffle related detail
     @IBOutlet var no_of_ticketLabel: UILabel!
     
     
-    @IBAction func totalPriceBtn(_ sender: UIButton) {
-        let currentContact = String(userMobileField.text ?? "0")
-        let contactTest = currentContact.isValidPhone
-        print(contactTest)
-        if contactTest == true || currentContact == "0"
+    @IBAction func totalPriceBtn(_ sender: UIButton)
+    {
+        let ticketCheckResult:Bool = ticketCheck()
+        if ticketCheckResult == true
         {
-        calculateTotal()
-        }
-        else
-        {
-            let alert = UIAlertController(title: "Input error", message: "Please enter 10 digit Australia phone number", preferredStyle: .alert)
-
-                   alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Default action"), style: .default, handler: { _ in
-                       NSLog("The \"cancel\" alert occured.")}))
-                   self.present(alert, animated: true, completion: nil)
+            let testResult:Bool = inputValidation()
+            if testResult == true
+            {
+                calculateTotal()
+            }
         }
     }
     
@@ -81,6 +77,7 @@ var raffle: Raffle?//collect Raffle related detail
          if let displayRaffle = raffle
                {
                    singleTicketPriceLabel.text = String(displayRaffle.price)
+                max_ticketLabel.text = String(displayRaffle.max_ticket)
                }
         
         
@@ -156,8 +153,110 @@ var raffle: Raffle?//collect Raffle related detail
         
     }
 
+    func inputValidation()->Bool
+    {
+        
+        
+        
+        
+        var inputTest:Bool = true
+        
+        let currentPlayerName:String = (playerNameField.text!)
+        
+        let currentEmail:String = String(userEmailField.text!)
+        let emailTest:Bool = currentEmail.isEmpty
+        var emailFormatTest:Bool = true
+        
+        let currentContact = String(userMobileField!.text!)
+        let contactTest:Bool = currentContact.isEmpty
+        var contactFormatTest:Bool = true
+                   
+        print ("this is user name \(currentPlayerName)")
+        print ("this is user email \(currentEmail)")
+        print ("this is user contact \(currentContact)")
+               // name test
+        if currentPlayerName.isEmpty
+        {
+            inputTest = false
+            let alert = UIAlertController(title: "Missing Player Name", message: "Need a player Name for the ticket.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            //test if at least one contact information provided
+            if emailTest && contactTest
+            {
+                print("Fail Contact information test")
+                inputTest = false
+                
+                let alert = UIAlertController(title: "Missing Contact Information", message: "Please Provide at least One contact information", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+            //if at least one or both provided
+            else
+            {
+                // if player provide contact no
+                if contactTest == false
+               {
+                //test the input
+                  contactFormatTest = currentContact.isValidPhone
+                  print("This is the contact no  test result \(contactFormatTest)")
+                //alert if the input fail
+                    if contactFormatTest == false
+                    {
+                        inputTest = false
+                        let alert = UIAlertController(title: "Phone no. provided is not valid", message: "Please Provide 10 digit Australia Phone no", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                        NSLog("The \"OK\" alert occured.")
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+                // if user provided email
+                if emailTest == false
+                {
+//                    test the email formate
+                    emailFormatTest = currentEmail.isValidEmail
+                    print("Has email input")
+                    print("This is the email provide \(currentEmail)")
+                    print("This is the email format test result \(emailFormatTest)")
+                    // if the test false alert
+                    if emailFormatTest == false
+                    {
+                        inputTest = false
+                    let alert = UIAlertController(title: "Email provided is not valid", message: "Please Provide a validate emaill address", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+                    self.present(alert, animated: true, completion: nil)
+                    }
+                }
+               }//end of contact information test
+            }
+        return inputTest
+    }
+   func ticketCheck()->Bool
+   {
+        let availableTicket:Int32 = raffle!.max_ticket
+        let ticketPurchase:Int32 = Int32(no_of_ticketLabel.text!) ?? 1
+        var enoughTicket:Bool = true
+        print ("this is \(ticketPurchase)")
+        print ("this is \(availableTicket)")
+        if ticketPurchase >  availableTicket
+        {
+         enoughTicket = false
+        let alert = UIAlertController(title: "Not enough ticket", message: "You only have \(availableTicket) available.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in NSLog("The \"OK\" alert occured.")}))
+        self.present(alert, animated: true, completion: nil)
+        
+        }
+    return enoughTicket
+    }
     
-   
     /*
     // MARK: - Navigation
 
