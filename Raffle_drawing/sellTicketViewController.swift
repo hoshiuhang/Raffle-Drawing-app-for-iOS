@@ -12,8 +12,8 @@ import UIKit
 
 class sellTicketViewController: UIViewController {
 
-var raffle: Raffle?//collect Raffle related detail
-    
+    var raffle: Raffle?//collect Raffle related detail
+    var player:Player?
     // on screen display and contol area
     //Player information control
     @IBAction func searchUserBtn(_ sender: UIButton) {
@@ -76,7 +76,7 @@ var raffle: Raffle?//collect Raffle related detail
         
          if let displayRaffle = raffle
                {
-                   singleTicketPriceLabel.text = String(displayRaffle.price)
+                singleTicketPriceLabel.text = String(displayRaffle.price)
                 max_ticketLabel.text = String(displayRaffle.max_ticket)
                }
         
@@ -153,6 +153,15 @@ var raffle: Raffle?//collect Raffle related detail
         
     }
 
+    func insertNewPlayer()
+    {
+        var NewPlayer = player
+        NewPlayer?.playerName = playerNameField.text ?? "Not Provided"
+        NewPlayer?.playerEmail = userEmailField.text ?? "Not Provided"
+        NewPlayer?.playerContact = Int32(userMobileField.text ?? "0") ?? 0
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        database.insertPlayer(player: NewPlayer!)
+    }
     func inputValidation()->Bool
     {
         

@@ -747,7 +747,18 @@ class SQLiteDatabase
         })
         return result
     }
-        
+    func updateTicketDetailBy(raffleID:Int32, ticket: Ticket)
+       {
+           let id = ticket.ticketID
+           let updateStatementQuery = "UPDATE table\(raffleID) SET playerName = ?, playerEmail = ?, playerContact = ? WHERE ID = \(id) "
+           updateWithQuery(updateStatementQuery, bindingFunction:{(updateStatment) in
+               //upate Raffle status
+               sqlite3_bind_text(updateStatment, 1, NSString(string:ticket.playerName).utf8String, -1, nil)
+               sqlite3_bind_text(updateStatment, 2, NSString(string:ticket.playerEmail).utf8String, -1, nil)
+               sqlite3_bind_int(updateStatment, 3, Int32(ticket.playerContact))
+              })
+              
+       }
         
         
         

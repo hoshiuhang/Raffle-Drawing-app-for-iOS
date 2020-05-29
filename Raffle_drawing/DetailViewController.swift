@@ -207,8 +207,35 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }
+                
+                
 
-            }
+                }
+                    if segue.identifier == "showTicketDetailSegue"
+                   {
+                       guard let ticketDetailView = segue.destination as? ticketDetailViewController else
+                       {
+                           fatalError("unexpected destination: \(segue.destination)")
+                       }
+                    
+                       guard let selectedTicketCell = sender as? ticketTableViewCell2 else
+                       {
+                           fatalError("Unexpected sender: \(String(describing:sender))")
+                       }
+                        guard let indexPath = ticketView.indexPath(for: selectedTicketCell) else
+                       {
+                           fatalError("The selected cell is not being displayed by the table")
+                       }
+                       let selectedTicket = tickets[indexPath.row]
+                       ticketDetailView.ticket = selectedTicket
+                        let selectedRaffle = raffle
+                        ticketDetailView.raffle = selectedRaffle
+                       }
+               
+                    
+                    
+
+                    
         
         
         
@@ -231,6 +258,15 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func finishEditingSegue(segue: UIStoryboardSegue) {
         
         
+    }
+    @IBAction func updateTicketDetailCompleteSegue(segue: UIStoryboardSegue) {
+        
+        let database : SQLiteDatabase = SQLiteDatabase(databaseName: "MyDatabase")
+        let raffleName = raffle!.ID
+        tickets = database.selectAllTicket(tableName:raffleName)
+        
+            self.ticketView.reloadData()
+               print("table reload")
     }
     
     
